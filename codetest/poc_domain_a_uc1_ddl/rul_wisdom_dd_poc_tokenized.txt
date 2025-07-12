@@ -1,0 +1,38 @@
+CREATE TABLE testing.rul_wisdom_dd_poc_tokenized (
+  trx_date STRING,
+  transaction_id STRING,
+  sku STRING,
+  business_id STRING,
+  rules_id STRING,
+  msisdn STRING,
+  brand STRING,
+  region_hlr STRING,
+  non_usage_flag STRING,
+  allowance_subtype STRING,
+  allowances_descriptions STRING,
+  quota_name STRING,
+  bonus_apps_id STRING,
+  profile_name STRING,
+  cust_type_desc STRING,
+  cust_subtype_desc STRING,
+  customer_sub_segment STRING,
+  lacci_id STRING,
+  area_sales STRING,
+  region_sales STRING,
+  branch STRING,
+  subbranch STRING,
+  cluster_sales STRING,
+  provinsi STRING,
+  kabupaten STRING,
+  kecamatan STRING,
+  kelurahan STRING,
+  node_type STRING,
+  charge DECIMAL(18,6),
+  rev DECIMAL(18,6),
+  event_date STRING)
+USING parquet
+PARTITIONED BY (event_date)
+LOCATION 'hdfs://nsdiscovery/data/landing/gd_it_bdm_ops/fastdb/bir/rul_wisdom_dd_poc_tokenized'
+TBLPROPERTIES (
+  'bucketing_version' = '2',
+  'transient_lastDdlTime' = '1744602242')

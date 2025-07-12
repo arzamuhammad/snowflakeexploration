@@ -1,0 +1,18 @@
+CREATE TABLE testing.subs_ocs_spp_poc_tokenized (
+  timestamp_r TIMESTAMP,
+  trx_date STRING,
+  msisdn STRING,
+  provider_id STRING,
+  created_date STRING,
+  first_activation_date STRING,
+  file_id STRING,
+  load_ts TIMESTAMP,
+  load_user STRING,
+  offer_effective_date TIMESTAMP,
+  event_date STRING)
+USING parquet
+PARTITIONED BY (event_date)
+LOCATION 'hdfs://nsdiscovery/data/landing/gd_it_bdm_ops/fastdb/bir/subs_ocs_spp_poc_tokenized'
+TBLPROPERTIES (
+  'bucketing_version' = '2',
+  'transient_lastDdlTime' = '1744795760')

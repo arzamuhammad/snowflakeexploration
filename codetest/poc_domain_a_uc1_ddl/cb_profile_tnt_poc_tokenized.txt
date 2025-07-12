@@ -1,0 +1,38 @@
+CREATE TABLE testing.cb_profile_tnt_poc_tokenized (
+  trx_date STRING,
+  msisdn STRING,
+  activation_date STRING,
+  area_sales STRING,
+  region_sales STRING,
+  cluster_sales STRING,
+  kabupaten STRING,
+  kecamatan STRING,
+  pre2post_migration_date STRING,
+  pre2post_flag STRING,
+  pre2post_los INT,
+  postpaid_offer_id STRING,
+  postpaid_offer_name STRING,
+  los BIGINT,
+  region_hlr STRING,
+  brand STRING,
+  status STRING,
+  expire_date STRING,
+  grace_date STRING,
+  price_plan STRING,
+  cust_type_desc STRING,
+  cust_subtype_desc STRING,
+  msisdn_hash STRING,
+  customer_sub_segment STRING,
+  fa_id STRING,
+  load_ts STRING,
+  load_user STRING,
+  job_id STRING,
+  los_reset BIGINT,
+  post2pre_los BIGINT,
+  event_date STRING)
+USING parquet
+PARTITIONED BY (event_date)
+LOCATION 'hdfs://nsdiscovery/data/landing/gd_it_bdm_ops/fastdb/bir/cb_profile_tnt_poc_tokenized'
+TBLPROPERTIES (
+  'bucketing_version' = '2',
+  'transient_lastDdlTime' = '1744601291')

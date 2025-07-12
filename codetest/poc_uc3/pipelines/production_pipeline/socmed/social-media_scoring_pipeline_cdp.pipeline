@@ -1,0 +1,1793 @@
+{
+  "doc_type": "pipeline",
+  "version": "3.0",
+  "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "id": "elyra-auto-generated-pipeline",
+  "primary_pipeline": "primary",
+  "pipelines": [
+    {
+      "id": "primary",
+      "nodes": [
+        {
+          "id": "81ccd84b-6884-49a0-b826-820941be9e84",
+          "type": "execution_node",
+          "op": "local-directory-catalog:a912d4903c94",
+          "app_data": {
+            "component_parameters": {
+              "inputfilepath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "db794878-1528-47b6-9675-be9e0ae4961b",
+                  "option": "output_tseltemppath"
+                }
+              },
+              "textcolumnname": {
+                "widget": "string",
+                "value": "omni_search_t"
+              },
+              "regexpattern": {
+                "widget": "string",
+                "value": "\\d+|[^\\w\\s]|NULL|~"
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temppath": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/pre_processing_data.yaml'}}",
+            "component_description": "Customized preprocessing data for CX-NLP",
+            "label": "Ts-Pre-Process-1",
+            "ui_data": {
+              "label": "Ts-Pre-Process-1",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 12,
+              "y_pos": 408.5,
+              "description": "Customized preprocessing data for CX-NLP"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "6851c3bc-34f8-4641-9096-8ac1931eedbe",
+                  "node_id_ref": "db794878-1528-47b6-9675-be9e0ae4961b",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "6473daa9-39d9-4646-badb-fadffa20a485",
+          "type": "execution_node",
+          "op": "local-directory-catalog:790e9d74ce5d",
+          "app_data": {
+            "component_parameters": {
+              "inputfilepath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "81ccd84b-6884-49a0-b826-820941be9e84",
+                  "option": "output_temppath"
+                }
+              },
+              "inputn": {
+                "widget": "string",
+                "value": "2"
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temppath1": "",
+              "output_temppath2": "",
+              "output_temppath3": "",
+              "output_temppath4": "",
+              "output_temppath5": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/pre_processing_split_to_parcom.yaml'}}",
+            "component_description": "Splitting data to n-fold customized for pararel computing in CX-NLP Project",
+            "label": "Ts-Pre-Process-2",
+            "ui_data": {
+              "label": "Ts-Pre-Process-2",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 238,
+              "y_pos": 409.5,
+              "description": "Splitting data to n-fold customized for pararel computing in CX-NLP Project"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "4e82f517-40d0-4418-9378-f1ae5c87f630",
+                  "node_id_ref": "81ccd84b-6884-49a0-b826-820941be9e84",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "eb9a737d-e0af-4f29-aab0-b53567c938ab",
+          "type": "execution_node",
+          "op": "local-directory-catalog:ef28d1342437",
+          "app_data": {
+            "component_parameters": {
+              "modelname": {
+                "widget": "string",
+                "value": "SOCMED_AIML_NLP_BERT_TOPIC"
+              },
+              "modelstage": {
+                "widget": "string",
+                "value": "Production"
+              },
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "kubernetes_cpu_count": {},
+              "output_temp": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/load_model_mlflow.yaml'}}",
+            "component_description": "Load MLFlow Model",
+            "label": "Load Topic Model",
+            "ui_data": {
+              "label": "Load Topic Model",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 482,
+              "y_pos": 411.5,
+              "description": "Load MLFlow Model"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "abaae1e0-18e2-41a0-a745-bbf60fe08401",
+                  "node_id_ref": "6473daa9-39d9-4646-badb-fadffa20a485",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "a63e34c5-bec5-4638-8309-557278ea1bbd",
+                  "node_id_ref": "1b850972-dc1e-40e7-a10f-940a8c84b827",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "9fd6927e-dffe-4543-80b2-7c8c444f0410",
+                  "node_id_ref": "7a184f7a-08d9-4c00-bed0-c2fcf4104e60",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "a0bccbe7-7873-4ff4-b4d3-d7c5116d2d4e",
+          "type": "execution_node",
+          "op": "local-directory-catalog:ef28d1342437",
+          "app_data": {
+            "component_parameters": {
+              "modelname": {
+                "widget": "string",
+                "value": "SOCMED_AIML_NLP_BERT_SENTIMENT"
+              },
+              "modelstage": {
+                "widget": "string",
+                "value": "Production"
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temp": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/load_model_mlflow.yaml'}}",
+            "component_description": "Load MLFlow Model",
+            "label": "Load Sentiment Model",
+            "ui_data": {
+              "label": "Load Sentiment Model",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 481,
+              "y_pos": 496.5,
+              "description": "Load MLFlow Model"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "d36cb47b-233f-4dc3-86b8-cbb322392582",
+                  "node_id_ref": "6473daa9-39d9-4646-badb-fadffa20a485",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "68c1779a-14f8-464d-9047-954d24d64f7f",
+                  "node_id_ref": "1b850972-dc1e-40e7-a10f-940a8c84b827",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "18196090-7e96-45d8-b4e0-8cf663e705ce",
+                  "node_id_ref": "7a184f7a-08d9-4c00-bed0-c2fcf4104e60",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "1b850972-dc1e-40e7-a10f-940a8c84b827",
+          "type": "execution_node",
+          "op": "local-directory-catalog:86c0127239b6",
+          "app_data": {
+            "component_parameters": {
+              "sourcehost": {
+                "widget": "string",
+                "value": "minio-service.mlops-staging.svc.cluster.local:9000"
+              },
+              "sourceaccesskey": {
+                "widget": "string",
+                "value": "minio"
+              },
+              "sourcesecretkey": {
+                "widget": "string",
+                "value": "Tselmlops#2022"
+              },
+              "sourcebucketname": {
+                "widget": "string",
+                "value": "aiml-bert-nlp"
+              },
+              "sourcedatasetname": {
+                "widget": "string",
+                "value": "text-references-similarity.csv"
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temp-output-path": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/read_file_from_minio.yaml'}}",
+            "component_description": "Read File from MinIO",
+            "label": "Read References",
+            "ui_data": {
+              "label": "Read References",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 238,
+              "y_pos": 575.5,
+              "description": "Read File from MinIO"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "e5b01d08-19ea-46ed-83c1-04cabe03aac5",
+          "type": "execution_node",
+          "op": "local-directory-catalog:345a4bd3fc06",
+          "app_data": {
+            "component_parameters": {
+              "inputfile": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "7a184f7a-08d9-4c00-bed0-c2fcf4104e60",
+                  "option": "output_temppath1"
+                }
+              },
+              "modelpath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "a0bccbe7-7873-4ff4-b4d3-d7c5116d2d4e",
+                  "option": "output_temp"
+                }
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temppath": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/predict.yaml'}}",
+            "component_description": "Model predict using PyTorch",
+            "label": "C-Predict-1-Sentiment",
+            "ui_data": {
+              "label": "C-Predict-1-Sentiment",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 740,
+              "y_pos": 497.5,
+              "description": "Model predict using PyTorch"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "fabf3b08-ef59-4592-858a-89ec39d699e7",
+                  "node_id_ref": "a0bccbe7-7873-4ff4-b4d3-d7c5116d2d4e",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "f686a18b-a88f-4cc3-844e-a0f533f02aec",
+          "type": "execution_node",
+          "op": "local-directory-catalog:345a4bd3fc06",
+          "app_data": {
+            "component_parameters": {
+              "inputfile": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "7a184f7a-08d9-4c00-bed0-c2fcf4104e60",
+                  "option": "output_temppath2"
+                }
+              },
+              "modelpath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "a0bccbe7-7873-4ff4-b4d3-d7c5116d2d4e",
+                  "option": "output_temp"
+                }
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temppath": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/predict.yaml'}}",
+            "component_description": "Model predict using PyTorch",
+            "label": "C-Predict-2-Sentiment",
+            "ui_data": {
+              "label": "C-Predict-2-Sentiment",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 740,
+              "y_pos": 562.5,
+              "description": "Model predict using PyTorch"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "dc8842b9-3ed6-4c5d-9257-74013e567059",
+                  "node_id_ref": "a0bccbe7-7873-4ff4-b4d3-d7c5116d2d4e",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "32470f38-07d8-4fb2-a64c-5b2d2c94a69d",
+          "type": "execution_node",
+          "op": "local-directory-catalog:07043fa3aca2",
+          "app_data": {
+            "component_parameters": {
+              "inputpath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "3cc2dc99-a8ca-4dc2-be46-a3fefe57065d",
+                  "option": "output_temp-output-path"
+                }
+              },
+              "inputpathsentiment": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "5e67e56f-20d7-47d2-85ea-b4b7b8deb4e7",
+                  "option": "output_temppath"
+                }
+              },
+              "inputpathtopic": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "6fdddb18-c5af-46e8-9017-e72b3346e1ae",
+                  "option": "output_temppath"
+                }
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temppath": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/post_processing_join_data.yaml'}}",
+            "component_description": "Join data between 3 entity data (raw data, predicted topic, predicted sentiment) customized for CX-NLP",
+            "label": "Post 2-Process",
+            "ui_data": {
+              "label": "Post 2-Process",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 1209,
+              "y_pos": 450.5,
+              "description": "Join data between 3 entity data (raw data, predicted topic, predicted sentiment) customized for CX-NLP"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "46adb2a3-8a1a-4960-969a-cdbde1ffe160",
+                  "node_id_ref": "5e67e56f-20d7-47d2-85ea-b4b7b8deb4e7",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "4dd92d2e-545b-4ff1-8fac-5bd114075467",
+                  "node_id_ref": "6fdddb18-c5af-46e8-9017-e72b3346e1ae",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "5d610e3e-a338-4294-b3c0-15be03af9bab",
+          "type": "execution_node",
+          "op": "local-directory-catalog:e3f55bb5f729",
+          "app_data": {
+            "component_parameters": {
+              "inputpath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "32470f38-07d8-4fb2-a64c-5b2d2c94a69d",
+                  "option": "output_temppath"
+                }
+              },
+              "datasource": {
+                "widget": "string",
+                "value": "Social-Media"
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temppath": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/post_processing.yaml'}}",
+            "component_description": "Rename column and generate new column customized for CX-NLP",
+            "label": "Post 3-Process",
+            "ui_data": {
+              "label": "Post 3-Process",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 1433,
+              "y_pos": 495.5,
+              "description": "Rename column and generate new column customized for CX-NLP"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "a9b573d6-46af-470e-85ff-aaf44d2bc6a6",
+                  "node_id_ref": "32470f38-07d8-4fb2-a64c-5b2d2c94a69d",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "8f2fd992-2a18-4fe0-ab3b-74589c173bbf",
+          "type": "execution_node",
+          "op": "local-directory-catalog:e0f00eba2476",
+          "app_data": {
+            "component_parameters": {
+              "datasource": {
+                "widget": "string",
+                "value": "Social-Media"
+              },
+              "filepath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "5d610e3e-a338-4294-b3c0-15be03af9bab",
+                  "option": "output_temppath"
+                }
+              },
+              "databasename": {
+                "widget": "string",
+                "value": "xc"
+              },
+              "tablename": {
+                "widget": "string",
+                "value": "cx_socmed_dwh"
+              },
+              "writemode": {
+                "widget": "string",
+                "value": "append"
+              },
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "kubernetes_cpu_count": {}
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/ext_to_hive.yaml'}}",
+            "component_description": "store scoring result as external hive table",
+            "label": "",
+            "ui_data": {
+              "label": "ext to hive",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 1664,
+              "y_pos": 449.5,
+              "description": "store scoring result as external hive table"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "411c9ec2-0b52-4d2b-90dd-961733a0919a",
+                  "node_id_ref": "5d610e3e-a338-4294-b3c0-15be03af9bab",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "3cc2dc99-a8ca-4dc2-be46-a3fefe57065d",
+          "type": "execution_node",
+          "op": "local-directory-catalog:de0961671d78",
+          "app_data": {
+            "component_parameters": {
+              "databasename": {
+                "widget": "string",
+                "value": "xc"
+              },
+              "tablename": {
+                "widget": "string",
+                "value": "socmed_interaction_dd"
+              },
+              "eventdate": {
+                "widget": "string",
+                "value": ""
+              },
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "kubernetes_cpu_count": {},
+              "output_temp-output-path": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/read_data_from_hive_table.yaml'}}",
+            "component_description": "Read From Hive Table Customize for CX-NLP Project",
+            "label": "",
+            "ui_data": {
+              "label": "Read From Hive Table",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": -427,
+              "y_pos": 411.5,
+              "description": "Read From Hive Table Customize for CX-NLP Project"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "656b5e3b-ae9c-443e-99ea-1e71e7740b03",
+          "type": "execution_node",
+          "op": "local-directory-catalog:a912d4903c94",
+          "app_data": {
+            "component_parameters": {
+              "inputfilepath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "db794878-1528-47b6-9675-be9e0ae4961b",
+                  "option": "output_competitortemppath"
+                }
+              },
+              "textcolumnname": {
+                "widget": "string",
+                "value": "omni_search_t"
+              },
+              "regexpattern": {
+                "widget": "string",
+                "value": "\\d+|[^\\w\\s]|NULL|~"
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temppath": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/pre_processing_data.yaml'}}",
+            "component_description": "Customized preprocessing data for CX-NLP",
+            "label": "C-Pre-Process-1",
+            "ui_data": {
+              "label": "C-Pre-Process-1",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 12,
+              "y_pos": 495.5,
+              "description": "Customized preprocessing data for CX-NLP"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "ae7f61fc-91eb-481a-83d1-1c38ea72658f",
+                  "node_id_ref": "db794878-1528-47b6-9675-be9e0ae4961b",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "7a184f7a-08d9-4c00-bed0-c2fcf4104e60",
+          "type": "execution_node",
+          "op": "local-directory-catalog:790e9d74ce5d",
+          "app_data": {
+            "component_parameters": {
+              "inputfilepath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "656b5e3b-ae9c-443e-99ea-1e71e7740b03",
+                  "option": "output_temppath"
+                }
+              },
+              "inputn": {
+                "widget": "string",
+                "value": "2"
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temppath1": "",
+              "output_temppath2": "",
+              "output_temppath3": "",
+              "output_temppath4": "",
+              "output_temppath5": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/pre_processing_split_to_parcom.yaml'}}",
+            "component_description": "Splitting data to n-fold customized for pararel computing in CX-NLP Project",
+            "label": "C-Pre-Process-2",
+            "ui_data": {
+              "label": "C-Pre-Process-2",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 238,
+              "y_pos": 495.5,
+              "description": "Splitting data to n-fold customized for pararel computing in CX-NLP Project"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "29c77a3e-979a-48dd-87b4-251d8962cfcb",
+                  "node_id_ref": "656b5e3b-ae9c-443e-99ea-1e71e7740b03",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "f5ecd995-105c-4991-8da0-02e6e059d169",
+          "type": "execution_node",
+          "op": "local-directory-catalog:345a4bd3fc06",
+          "app_data": {
+            "component_parameters": {
+              "inputfile": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "6473daa9-39d9-4646-badb-fadffa20a485",
+                  "option": "output_temppath1"
+                }
+              },
+              "modelpath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "a0bccbe7-7873-4ff4-b4d3-d7c5116d2d4e",
+                  "option": "output_temp"
+                }
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temppath": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/predict.yaml'}}",
+            "component_description": "Model predict using PyTorch",
+            "label": "Ts-Predict-1-Sentiment",
+            "ui_data": {
+              "label": "Ts-Predict-1-Sentiment",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 740,
+              "y_pos": 632.5,
+              "description": "Model predict using PyTorch"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "613626b9-4130-4454-b959-06d0aaa86d27",
+                  "node_id_ref": "a0bccbe7-7873-4ff4-b4d3-d7c5116d2d4e",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "39c9c6d6-a2c2-45d0-bee6-a2720f20ff1c",
+          "type": "execution_node",
+          "op": "local-directory-catalog:345a4bd3fc06",
+          "app_data": {
+            "component_parameters": {
+              "inputfile": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "6473daa9-39d9-4646-badb-fadffa20a485",
+                  "option": "output_temppath2"
+                }
+              },
+              "modelpath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "a0bccbe7-7873-4ff4-b4d3-d7c5116d2d4e",
+                  "option": "output_temp"
+                }
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temppath": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/predict.yaml'}}",
+            "component_description": "Model predict using PyTorch",
+            "label": "Ts-Predict-2-Sentiment",
+            "ui_data": {
+              "label": "Ts-Predict-2-Sentiment",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 740,
+              "y_pos": 697.5,
+              "description": "Model predict using PyTorch"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "ed0877ae-210c-40bc-8538-2a90faec4c61",
+                  "node_id_ref": "a0bccbe7-7873-4ff4-b4d3-d7c5116d2d4e",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "f0e7775b-9697-4a6a-869a-5dceb135586f",
+          "type": "execution_node",
+          "op": "local-directory-catalog:345a4bd3fc06",
+          "app_data": {
+            "component_parameters": {
+              "inputfile": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "7a184f7a-08d9-4c00-bed0-c2fcf4104e60",
+                  "option": "output_temppath1"
+                }
+              },
+              "modelpath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "eb9a737d-e0af-4f29-aab0-b53567c938ab",
+                  "option": "output_temp"
+                }
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temppath": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/predict.yaml'}}",
+            "component_description": "Model predict using PyTorch",
+            "label": "C-Predict-1-Topic",
+            "ui_data": {
+              "label": "C-Predict-1-Topic",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 742,
+              "y_pos": 202.5,
+              "description": "Model predict using PyTorch"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "bcfeeb7d-7529-41f1-bfb2-cfceff38a5af",
+                  "node_id_ref": "eb9a737d-e0af-4f29-aab0-b53567c938ab",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "14a1d704-fccb-48b7-9c50-089cfb4cdb1b",
+          "type": "execution_node",
+          "op": "local-directory-catalog:345a4bd3fc06",
+          "app_data": {
+            "component_parameters": {
+              "inputfile": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "7a184f7a-08d9-4c00-bed0-c2fcf4104e60",
+                  "option": "output_temppath2"
+                }
+              },
+              "modelpath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "eb9a737d-e0af-4f29-aab0-b53567c938ab",
+                  "option": "output_temp"
+                }
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temppath": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/predict.yaml'}}",
+            "component_description": "Model predict using PyTorch",
+            "label": "C-Predict-2-Topic",
+            "ui_data": {
+              "label": "C-Predict-2-Topic",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 742,
+              "y_pos": 267.5,
+              "description": "Model predict using PyTorch"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "73a8f50b-2580-408b-aada-655b79afd4f9",
+                  "node_id_ref": "eb9a737d-e0af-4f29-aab0-b53567c938ab",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "5e67e56f-20d7-47d2-85ea-b4b7b8deb4e7",
+          "type": "execution_node",
+          "op": "local-directory-catalog:341ed707e4a5",
+          "app_data": {
+            "component_parameters": {
+              "inputpath1": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "e5b01d08-19ea-46ed-83c1-04cabe03aac5",
+                  "option": "output_temppath"
+                }
+              },
+              "inputpath2": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "f686a18b-a88f-4cc3-844e-a0f533f02aec",
+                  "option": "output_temppath"
+                }
+              },
+              "inputpath3": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "f5ecd995-105c-4991-8da0-02e6e059d169",
+                  "option": "output_temppath"
+                }
+              },
+              "inputpath4": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "39c9c6d6-a2c2-45d0-bee6-a2720f20ff1c",
+                  "option": "output_temppath"
+                }
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temppath": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/post_processing_combine_parcom_for.yaml'}}",
+            "component_description": "Join splitted entity data from 4 pararel computation customized for CX-NLP",
+            "label": "Join sentiment data1",
+            "ui_data": {
+              "label": "Join sentiment data1",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 972,
+              "y_pos": 497.5,
+              "description": "Join splitted entity data from 4 pararel computation customized for CX-NLP"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "4b9bf8ec-0842-4638-a7f4-9298df2cd7df",
+                  "node_id_ref": "e5b01d08-19ea-46ed-83c1-04cabe03aac5",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "a6caa075-b3bc-49b7-bd4b-bc362ea8976a",
+                  "node_id_ref": "f686a18b-a88f-4cc3-844e-a0f533f02aec",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "75c8fcfc-38b7-43c6-aaf7-4066ef4e83a2",
+                  "node_id_ref": "f5ecd995-105c-4991-8da0-02e6e059d169",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "3ad446c1-3de1-4b9f-b468-f1cd565f8dca",
+                  "node_id_ref": "39c9c6d6-a2c2-45d0-bee6-a2720f20ff1c",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "6fdddb18-c5af-46e8-9017-e72b3346e1ae",
+          "type": "execution_node",
+          "op": "local-directory-catalog:341ed707e4a5",
+          "app_data": {
+            "component_parameters": {
+              "inputpath1": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "f0e7775b-9697-4a6a-869a-5dceb135586f",
+                  "option": "output_temppath"
+                }
+              },
+              "inputpath2": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "14a1d704-fccb-48b7-9c50-089cfb4cdb1b",
+                  "option": "output_temppath"
+                }
+              },
+              "inputpath3": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "457eeeaf-ae9d-49c1-985a-803aeea15092",
+                  "option": "output_temppath"
+                }
+              },
+              "inputpath4": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "06fe14d5-aa63-47f5-9961-23528e191620",
+                  "option": "output_temppath"
+                }
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {},
+              "output_temppath": ""
+            },
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/post_processing_combine_parcom_for.yaml'}}",
+            "component_description": "Join splitted entity data from 4 pararel computation customized for CX-NLP",
+            "label": "Join topic data",
+            "ui_data": {
+              "label": "Join topic data",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 976,
+              "y_pos": 405.5,
+              "description": "Join splitted entity data from 4 pararel computation customized for CX-NLP"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "76e5dc51-9576-4642-b3ae-14fc03d1035e",
+                  "node_id_ref": "f0e7775b-9697-4a6a-869a-5dceb135586f",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "5ea93252-8442-4d0d-a7fc-7a914587d40a",
+                  "node_id_ref": "14a1d704-fccb-48b7-9c50-089cfb4cdb1b",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "0014194a-3dbc-4a28-bccd-aecbcc7a83d3",
+                  "node_id_ref": "457eeeaf-ae9d-49c1-985a-803aeea15092",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "7d928b30-0c7a-4d81-9874-adf2f0f81314",
+                  "node_id_ref": "06fe14d5-aa63-47f5-9961-23528e191620",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "db794878-1528-47b6-9675-be9e0ae4961b",
+          "type": "execution_node",
+          "op": "local-directory-catalog:768072293f20",
+          "app_data": {
+            "component_parameters": {
+              "inputpath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "3cc2dc99-a8ca-4dc2-be46-a3fefe57065d",
+                  "option": "output_temp-output-path"
+                }
+              },
+              "tselbusinesslist": {
+                "widget": "string",
+                "value": "\"[10752, 3462, 7622, 8313, 14471, 3464, 12462, 16331, 9943, 7607, 9941, 14433, 16330, 9942, 16334, 7629, 20240]\""
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {}
+            },
+            "component_source": "{\"catalog_type\": \"local-directory-catalog\", \"component_ref\": {\"base_dir\": \"/home/jovyan/aiml_nlp/components\", \"path\": \"scoring_node/.ipynb_checkpoints/split_competitor-checkpoint.yaml\"}}",
+            "label": "",
+            "ui_data": {
+              "label": "Split Competitor Data",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": -204,
+              "y_pos": 453.5,
+              "description": "Split data to 2 path (Telkomsel Business & Competitor) customized for CX-NLP"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "6192d475-8b73-4052-9482-c8f509fab74f",
+                  "node_id_ref": "3cc2dc99-a8ca-4dc2-be46-a3fefe57065d",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "457eeeaf-ae9d-49c1-985a-803aeea15092",
+          "type": "execution_node",
+          "op": "local-directory-catalog:b0b1644b1bcb",
+          "app_data": {
+            "component_parameters": {
+              "inputfile": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "6473daa9-39d9-4646-badb-fadffa20a485",
+                  "option": "output_temppath1"
+                }
+              },
+              "modelpath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "eb9a737d-e0af-4f29-aab0-b53567c938ab",
+                  "option": "output_temp"
+                }
+              },
+              "referencepath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "1b850972-dc1e-40e7-a10f-940a8c84b827",
+                  "option": "output_temp-output-path"
+                }
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {}
+            },
+            "component_source": "{\"catalog_type\": \"local-directory-catalog\", \"component_ref\": {\"base_dir\": \"/home/jovyan/aiml_nlp/components\", \"path\": \"scoring_node/predict_class_sub_class.yaml\"}}",
+            "label": "Ts-Predict-1-Topic",
+            "ui_data": {
+              "label": "Ts-Predict-1-Topic",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 746,
+              "y_pos": 343.5,
+              "description": "Sentences classification using PyTorch & Cosine Similarity for CX-Platform Project"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "4cb8295e-3842-4f24-ba24-816fe8000459",
+                  "node_id_ref": "eb9a737d-e0af-4f29-aab0-b53567c938ab",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "06fe14d5-aa63-47f5-9961-23528e191620",
+          "type": "execution_node",
+          "op": "local-directory-catalog:b0b1644b1bcb",
+          "app_data": {
+            "component_parameters": {
+              "inputfile": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "6473daa9-39d9-4646-badb-fadffa20a485",
+                  "option": "output_temppath2"
+                }
+              },
+              "modelpath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "eb9a737d-e0af-4f29-aab0-b53567c938ab",
+                  "option": "output_temp"
+                }
+              },
+              "referencepath": {
+                "widget": "inputpath",
+                "value": {
+                  "value": "1b850972-dc1e-40e7-a10f-940a8c84b827",
+                  "option": "output_temp-output-path"
+                }
+              },
+              "mounted_volumes": [],
+              "kubernetes_pod_labels": [],
+              "kubernetes_tolerations": [],
+              "kubernetes_pod_annotations": [],
+              "kubernetes_cpu_count": {},
+              "kubernetes_shared_mem_size": {},
+              "kubernetes_gpu_count": {}
+            },
+            "component_source": "{\"catalog_type\": \"local-directory-catalog\", \"component_ref\": {\"base_dir\": \"/home/jovyan/aiml_nlp/components\", \"path\": \"scoring_node/predict_class_sub_class.yaml\"}}",
+            "label": "Ts-Predict-2-Topic",
+            "ui_data": {
+              "label": "Ts-Predict-2-Topic",
+              "image": "/notebook/mlops-production/cx-nlp-cx-nlp-new-cdp-20240628065520/static/elyra/kubeflow.svg",
+              "x_pos": 745,
+              "y_pos": 405.5,
+              "description": "Sentences classification using PyTorch & Cosine Similarity for CX-Platform Project"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "b8bb20ed-3ebb-40f1-ac51-c50732c73c9a",
+                  "node_id_ref": "eb9a737d-e0af-4f29-aab0-b53567c938ab",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "app_data": {
+        "ui_data": {
+          "comments": []
+        },
+        "version": 8,
+        "runtime_type": "KUBEFLOW_PIPELINES",
+        "properties": {
+          "name": "social-media_scoring_pipeline_cdp",
+          "runtime": "Kubeflow Pipelines",
+          "pipeline_parameters": [],
+          "pipeline_defaults": {
+            "mounted_volumes": [],
+            "kubernetes_pod_annotations": [],
+            "kubernetes_pod_labels": [],
+            "kubernetes_tolerations": [],
+            "kubernetes_shared_mem_size": {},
+            "kubernetes_cpu_count": {},
+            "kubernetes_gpu_count": {},
+            "kubernetes_secrets": [],
+            "env_vars": []
+          }
+        }
+      },
+      "runtime_ref": ""
+    }
+  ],
+  "schemas": []
+}

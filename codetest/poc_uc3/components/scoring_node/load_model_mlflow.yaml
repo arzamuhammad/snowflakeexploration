@@ -1,0 +1,47 @@
+name: Load Model MLFlow
+description: Load MLFlow Model
+inputs:
+- {name: modelName, type: String, optional: false, description: 'Registered Model Name in MLFlow'}
+- {name: modelStage, type: String, optional: false, description: 'Model Stage in MLFlow'}
+outputs:
+- {name: temp, type: String}
+implementation:
+  container:
+    #image: docker.cicd-jfrog.telkomsel.co.id/kubeflow-mlops-dev/jupyter-scipy:v1.6.0-rc.16
+    #image: docker.cicd-jfrog.telkomsel.co.id/kubeflow-mlops-dev/cloudera-base-cdp:centos7-cdp-v1.0.0
+    image: docker.cicd-jfrog.telkomsel.co.id/kubeflow-mlops-dev/jupyter-scipy:v1.6.0-rc.16-phase-3 
+    env:
+      #Notebook Information
+      "USER_NAME": "@mlcore_user_name@"
+      "GROUP_NAME": "@mlcore_group_name@"
+      "PROJECT_NAME": "@mlcore_project_name@"
+
+      #Gitlab Access
+      "MLCORE_GIT_ROOTURL" : "@mlcore_gitlab_rooturl@"
+      "REPO_NAME": "@mlcore_repo_name@"
+      "BRANCH": "@mlcore_branch_name@"
+      "DEST_LOCATION" : "./"
+      "MLCORE_GITLAB_TOKEN": "@mlcore_gitlab_cx_token@"
+      "MLCORE_GITLAB_USER": "@mlcore_gitlab_cx_user@"
+      "MLCORE_GITLAB_PASSWORD": "@mlcore_gitlab_cx_password@"
+      "MLCORE_USER_NAME": "@mlcore_email_user@" #Input your information
+
+      #Mlflow-Feast Config
+      "AWS_ACCESS_KEY_ID": "@mlcore_minio_user@" #Input your information
+      "AWS_SECRET_ACCESS_KEY": "@mlcore_minio_password@" #Input your information
+      "MLFLOW_TRACKING_URI": "http://mlflow.mlops-production.svc.cluster.local:5000" #Replace production with : development or staging or production
+      "MLFLOW_S3_ENDPOINT_URL": "http://minio-service.mlops-production.svc.cluster.local:9000"  #Replace production with : development or staging or production
+    command: 
+      - sh
+      - -ec
+      - |
+        python3 /home/jovyan/git_clone.py && 
+        pip install -r $REPO_NAME/nodes/scoring_node/load_model_mlflow/requirements.txt && 
+        python3 $REPO_NAME/nodes/scoring_node/load_model_mlflow/main.py --model-name "$@" --stage "$@" --temp "$@"
+    args:
+    - --model-name
+    - {inputValue: modelName}
+    - --stage
+    - {inputValue: modelStage}
+    - --temp
+    - {outputPath: temp}

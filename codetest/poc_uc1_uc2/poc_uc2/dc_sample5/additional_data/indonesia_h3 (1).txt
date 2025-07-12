@@ -1,0 +1,1 @@
+Hive-table: pe_bps.indonesia_h3_38prov

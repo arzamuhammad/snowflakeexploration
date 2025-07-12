@@ -1,0 +1,51 @@
+name: Read Folder Minio
+description: Read Folder on MinIO
+inputs:
+- {name: source bucket name, type: String, optional: false, description: 'source bucket name'}
+- {name: source folder name, type: String, optional: false, description: 'folder name'}
+- {name: host, type: String, optional: false, description: 'minio host'}
+- {name: access key, type: String, optional: false, description: 'minio username'}
+- {name: secret key, type: String, optional: false, description: 'minio password'}
+outputs:
+- {name: tempOutputPath, type: String,  description: 'temporary output path'}
+
+implementation:
+  container:
+    #image: docker.cicd-jfrog.telkomsel.co.id/kubeflow-mlops-dev/jupyter-scipy:v1.6.0-rc.16
+    #image: docker.cicd-jfrog.telkomsel.co.id/kubeflow-mlops-dev/cloudera-base-cdp:centos7-cdp-v1.0.0
+    image: docker.cicd-jfrog.telkomsel.co.id/kubeflow-mlops-dev/jupyter-scipy:v1.6.0-rc.16-phase-3
+    env:
+      #Notebook Information
+      "USER_NAME": "@mlcore_user_name@"
+      "GROUP_NAME": "@mlcore_group_name@"
+      "PROJECT_NAME": "@mlcore_project_name@"
+
+      #Gitlab Access
+      "MLCORE_GIT_ROOTURL" : "@mlcore_gitlab_rooturl@"
+      "REPO_NAME": "@mlcore_repo_name@"
+      "BRANCH": "@mlcore_branch_name@"
+      "DEST_LOCATION" : "./"
+      "MLCORE_GITLAB_TOKEN": "@mlcore_gitlab_cx_token@"
+      "MLCORE_GITLAB_USER": "@mlcore_gitlab_cx_user@"
+      "MLCORE_GITLAB_PASSWORD": "@mlcore_gitlab_cx_password@"
+      "MLCORE_USER_NAME": "@mlcore_email_user@" #Input your information
+    command: 
+      - sh
+      - -ec
+      - |
+        python3 /home/jovyan/git_clone.py && 
+        pip install -r $REPO_NAME/nodes/scoring_node/read_folder_minio/requirements.txt && 
+        python3 -u $REPO_NAME/nodes/scoring_node/read_folder_minio/main.py --bucket-name "$@" --folder-name "$@" --host "$@" --access-key "$@" --secret-key "$@" --temp-output-path "$@"
+    args:
+    - --bucket-name
+    - {inputValue: source bucket name}
+    - --folder-name
+    - {inputValue: source folder name}
+    - --host
+    - {inputValue: host}
+    - --access-key
+    - {inputValue: access key}
+    - --secret-key
+    - {inputValue: secret key}
+    - --temp-output-path
+    - {outputPath: tempOutputPath}

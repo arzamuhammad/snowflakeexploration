@@ -1,0 +1,9 @@
+pathlib 
+minio
+argparse
+requests
+urllib3
+python-dotenv
+subprocess.run
+omegaconf
+pydantic

@@ -1,0 +1,35 @@
+CREATE TABLE testing.lacci_dom_ifrs_chg_mm_poc_tokenized (
+  mm_date STRING,
+  subs_id STRING,
+  lacci_id STRING,
+  msisdn STRING,
+  brand STRING,
+  cust_type_desc STRING,
+  cust_subtype_desc STRING,
+  area_sales STRING,
+  region_sales STRING,
+  branch STRING,
+  subbranch STRING,
+  cluster_sales STRING,
+  provinsi STRING,
+  kabupaten STRING,
+  kecamatan STRING,
+  kelurahan STRING,
+  node_type STRING,
+  rev DECIMAL(38,15),
+  vol BIGINT,
+  trx BIGINT,
+  dur BIGINT,
+  load_ts TIMESTAMP,
+  load_user STRING,
+  customer_sub_segment STRING,
+  cust_id INT,
+  pre_post_flag TINYINT,
+  job_id STRING,
+  event_date STRING)
+USING parquet
+PARTITIONED BY (event_date)
+LOCATION 'hdfs://nsdiscovery/data/landing/gd_it_bdm_ops/fastdb/bir/lacci_dom_ifrs_chg_mm_poc_tokenized'
+TBLPROPERTIES (
+  'bucketing_version' = '2',
+  'transient_lastDdlTime' = '1744599475')

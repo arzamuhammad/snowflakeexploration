@@ -1,0 +1,11 @@
+CREATE TABLE testing.breakage_reference_poc_tokenized (
+  allowance_type STRING,
+  region STRING,
+  seized_rate DECIMAL(18,15),
+  allocation_rate DECIMAL(18,15),
+  event_date STRING)
+USING parquet
+LOCATION 'hdfs://nsdiscovery/data/landing/gd_it_bdm_ops/fastdb/bir/breakage_reference_poc_tokenized'
+TBLPROPERTIES (
+  'bucketing_version' = '2',
+  'transient_lastDdlTime' = '1744817957')

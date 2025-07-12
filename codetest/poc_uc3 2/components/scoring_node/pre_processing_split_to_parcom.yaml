@@ -1,0 +1,55 @@
+name: Pre-Processing-2
+description: Splitting data to n-fold customized for pararel computing in CX-NLP Project
+inputs:
+- {name: inputFilePath, type: String,  optional: false, description: 'Dataset file to be read'}
+- {name: inputN, type: String,  optional: false, description: 'Splitted to n-file'}
+outputs:
+- {name: tempPath1, type: String, description: 'Output path-1 of splitted CSV file'}
+- {name: tempPath2, type: String, description: 'Output path-2 of splitted CSV file'}
+- {name: tempPath3, type: String, description: 'Output path-3 of splitted CSV file'}
+- {name: tempPath4, type: String, description: 'Output path-4 of splitted CSV file'}
+- {name: tempPath5, type: String, description: 'Output path-5 of splitted CSV file'}
+
+implementation:
+  container:
+    image: docker.cicd-jfrog.telkomsel.co.id/kubeflow-mlops-dev/cloudera-base-cdp:centos7-cdp-v1.0.0
+    env:
+      #Working Directory Information
+      "WORKING_DIR": "preprocessing_split_to_parcom"
+      
+      #Notebook Information
+      "USER_NAME": "@mlcore_user_name@"
+      "GROUP_NAME": "@mlcore_group_name@"
+      "PROJECT_NAME": "@mlcore_project_name@"
+
+      #Gitlab Access
+      "MLCORE_GIT_ROOTURL" : "@mlcore_gitlab_rooturl@"
+      "REPO_NAME": "@mlcore_repo_name@"
+      "BRANCH": "@mlcore_branch_name@"
+      "DEST_LOCATION" : "./"
+      "MLCORE_GITLAB_TOKEN": "@mlcore_gitlab_cx_token@"
+      "MLCORE_GITLAB_USER": "@mlcore_gitlab_cx_user@"
+      "MLCORE_GITLAB_PASSWORD": "@mlcore_gitlab_cx_password@"
+      "MLCORE_USER_NAME": "@mlcore_email_user@" #Input your information
+    command: 
+      - sh
+      - -ec
+      - |
+        python3 /home/jovyan/git_clone.py && 
+        pip install -r $REPO_NAME/nodes/scoring_node/$WORKING_DIR/requirements.txt && 
+        python3 $REPO_NAME/nodes/scoring_node/$WORKING_DIR/main.py --input-file-path "$@" --input-n "$@" --temp-path-1 "$@" --temp-path-2 "$@" --temp-path-3 "$@" --temp-path-4 "$@" --temp-path-5 "$@" 
+    args:
+    - --input-file-path
+    - {inputPath: inputFilePath}
+    - --input-n
+    - {inputValue: inputN}
+    - --temp-path-1
+    - {outputPath: tempPath1}
+    - --temp-path-2
+    - {outputPath: tempPath2}
+    - --temp-path-3
+    - {outputPath: tempPath3}
+    - --temp-path-4
+    - {outputPath: tempPath4}
+    - --temp-path-5
+    - {outputPath: tempPath5}

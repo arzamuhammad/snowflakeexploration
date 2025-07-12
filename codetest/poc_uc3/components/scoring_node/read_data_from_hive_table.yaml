@@ -1,0 +1,54 @@
+name: Read From Hive Table
+description: Read From Hive Table Customize for CX-NLP Project
+inputs:
+- {name: databaseName, type: String, optional: False, description: 'Name of database/scheme (Ex: xc)'}
+- {name: tableName, type: String, optional: False, description: 'Name of table (Ex: tnps_datamart)'}
+- {name: eventDate, type: String, optional: true, description: 'Event date of data (Ex. 2023-10-24)'}
+outputs:
+- {name: temp-output-path, type: String,  description: 'temporary output path'}
+implementation:
+  container:
+    image: docker.cicd-jfrog.telkomsel.co.id/kubeflow-mlops-dev/cloudera-base-cdp:centos7-cdp-v1.0.0
+    env:
+      #TTTTEEESSSSSTTTT
+      #Working Directory Information
+      "WORKING_DIR": "read_data_from_hive_table"
+
+      #Notebook Environment
+      "USER_NAME": "@mlcore_user_name@"
+      "GROUP_NAME": "@mlcore_group_name@"
+      "PROJECT_NAME": "@mlcore_project_name@"
+      
+      #Gitlab Access
+      "MLCORE_GIT_ROOTURL" : "@mlcore_gitlab_rooturl@"
+      "REPO_NAME": "@mlcore_repo_name@"
+      "BRANCH": "@mlcore_branch_name@"
+      "DEST_LOCATION" : "./"
+      "MLCORE_GITLAB_TOKEN": "@mlcore_gitlab_cx_token@"
+      "MLCORE_GITLAB_USER": "@mlcore_gitlab_cx_user@"
+      "MLCORE_GITLAB_PASSWORD": "@mlcore_gitlab_cx_password@"
+      "MLCORE_USER_NAME": "@mlcore_email_user@" #Input your information
+
+      #Kerberos Authentication
+      "LDAP_USERNAME" : "@mlcore_ldap_username@" #Input your information
+      "LDAP_PASSWORD" : "@mlcore_ldap_password@" #Input your information
+
+      #Spark Queue
+      "SPARK_QUEUE" : "root.s_mkt.hui_xc_ops"  #Input your information
+    command: 
+      - sh
+      - -ec
+      - |
+        python3 /home/jovyan/git_clone.py && 
+        pip install -r $REPO_NAME/nodes/scoring_node/$WORKING_DIR/requirements.txt && 
+        echo "$LDAP_PASSWORD" | kinit $LDAP_USERNAME && 
+        spark-submit --queue $SPARK_QUEUE --master yarn $REPO_NAME/nodes/scoring_node/$WORKING_DIR/main.py --database-name "$@" --table-name "$@" --event-date "%@" --temp-output-path "$@"
+    args:
+    - --database-name
+    - {inputValue: databaseName}
+    - --table-name
+    - {inputValue: tableName}
+    - --event-date
+    - {inputValue: eventDate}
+    - --temp-output-path
+    - {outputPath: temp-output-path}

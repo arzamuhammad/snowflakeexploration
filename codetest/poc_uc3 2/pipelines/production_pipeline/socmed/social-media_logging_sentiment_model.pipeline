@@ -1,0 +1,327 @@
+{
+  "doc_type": "pipeline",
+  "version": "3.0",
+  "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
+  "id": "elyra-auto-generated-pipeline",
+  "primary_pipeline": "primary",
+  "pipelines": [
+    {
+      "id": "primary",
+      "nodes": [
+        {
+          "id": "e630f6b9-7d19-4432-99ef-60d25e16a2a6",
+          "type": "execution_node",
+          "op": "local-directory-catalog:682361f6eeba",
+          "app_data": {
+            "component_parameters": {
+              "mlflowexperimentname": {
+                "activeControl": "StringControl",
+                "StringControl": "SOCMED_AIML_NLP_BERT_SENTIMENT"
+              },
+              "classparams": {
+                "activeControl": "StringControl",
+                "StringControl": "{'negative':0, 'positive':1, 'netral':2}"
+              },
+              "dropout": {
+                "activeControl": "StringControl",
+                "StringControl": "0.2"
+              },
+              "numberofclasses": {
+                "activeControl": "StringControl",
+                "StringControl": "3"
+              },
+              "maxlen": {
+                "activeControl": "StringControl",
+                "StringControl": "50"
+              },
+              "tokenizerpath": {
+                "value": "281966b2-4a87-438f-aa79-9471acd64d50",
+                "option": "elyra_output_tempoutputpath"
+              },
+              "bertpretrained": {
+                "value": "17b886a1-c5c7-4ed3-a9c2-e676cedfe108",
+                "option": "elyra_output_tempoutputpath"
+              },
+              "finetunedweight": {
+                "value": "7b72299f-f412-4a95-9f91-0d71dccaa7e2",
+                "option": "elyra_output_temp-output-path"
+              }
+            },
+            "component_description": "Log BERT Model to MLFlow",
+            "label": "",
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'training_node/bert_init_log.yaml'}}",
+            "ui_data": {
+              "label": "BERT Init Logging",
+              "image": "/static/elyra/kubeflow.svg",
+              "x_pos": 209,
+              "y_pos": 225.5,
+              "description": "Log BERT Model to MLFlow"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "e25801fa-6fe0-4e3b-bf42-d508bbe6e610",
+                  "node_id_ref": "281966b2-4a87-438f-aa79-9471acd64d50",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "711188c6-aee3-431a-ba49-2e0b983ebfd3",
+                  "node_id_ref": "17b886a1-c5c7-4ed3-a9c2-e676cedfe108",
+                  "port_id_ref": "outPort"
+                },
+                {
+                  "id": "01d97b7c-a57b-4440-9884-ee1719562999",
+                  "node_id_ref": "7b72299f-f412-4a95-9f91-0d71dccaa7e2",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "281966b2-4a87-438f-aa79-9471acd64d50",
+          "type": "execution_node",
+          "op": "local-directory-catalog:c9b9c11d2f9f",
+          "app_data": {
+            "component_parameters": {
+              "source_bucket_name": {
+                "activeControl": "StringControl",
+                "StringControl": "aiml-bert-nlp"
+              },
+              "source_folder_name": {
+                "activeControl": "StringControl",
+                "StringControl": "tsel_cx_tokenv2.bin/"
+              },
+              "host": {
+                "activeControl": "StringControl",
+                "StringControl": "minio-service.mlops-production.svc.cluster.local:9000"
+              },
+              "access_key": {
+                "activeControl": "StringControl",
+                "StringControl": "minio"
+              },
+              "secret_key": {
+                "activeControl": "StringControl",
+                "StringControl": "Tselmlopsprod#2022"
+              },
+              "output_tempoutputpath": ""
+            },
+            "component_description": "Read Folder on MinIO",
+            "label": "Load tokenizer",
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/read_folder_minio.yaml'}}",
+            "ui_data": {
+              "label": "Load tokenizer",
+              "image": "/static/elyra/kubeflow.svg",
+              "x_pos": -124,
+              "y_pos": 127.5,
+              "description": "Read Folder on MinIO"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "17b886a1-c5c7-4ed3-a9c2-e676cedfe108",
+          "type": "execution_node",
+          "op": "local-directory-catalog:c9b9c11d2f9f",
+          "app_data": {
+            "component_parameters": {
+              "source_bucket_name": {
+                "activeControl": "StringControl",
+                "StringControl": "aiml-bert-nlp"
+              },
+              "source_folder_name": {
+                "activeControl": "StringControl",
+                "StringControl": "huggingface_bert_modelv2.bin/"
+              },
+              "host": {
+                "activeControl": "StringControl",
+                "StringControl": "minio-service.mlops-production.svc.cluster.local:9000"
+              },
+              "access_key": {
+                "activeControl": "StringControl",
+                "StringControl": "minio"
+              },
+              "secret_key": {
+                "activeControl": "StringControl",
+                "StringControl": "Tselmlopsprod#2022"
+              },
+              "output_tempoutputpath": ""
+            },
+            "component_description": "Read Folder on MinIO",
+            "label": "Load pretrained model",
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/read_folder_minio.yaml'}}",
+            "ui_data": {
+              "label": "Load pretrained model",
+              "image": "/static/elyra/kubeflow.svg",
+              "x_pos": -130,
+              "y_pos": 228.5,
+              "description": "Read Folder on MinIO"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "7b72299f-f412-4a95-9f91-0d71dccaa7e2",
+          "type": "execution_node",
+          "op": "local-directory-catalog:8d60aadfdf52",
+          "app_data": {
+            "component_parameters": {
+              "sourcehost": {
+                "activeControl": "StringControl",
+                "StringControl": "minio-service.mlops-production.svc.cluster.local:9000"
+              },
+              "sourceaccesskey": {
+                "activeControl": "StringControl",
+                "StringControl": "minio"
+              },
+              "sourcesecretkey": {
+                "activeControl": "StringControl",
+                "StringControl": "Tselmlopsprod#2022"
+              },
+              "sourcebucketname": {
+                "activeControl": "StringControl",
+                "StringControl": "aiml-bert-nlp"
+              },
+              "sourcedatasetname": {
+                "activeControl": "StringControl",
+                "StringControl": "final_tsel_cx_socmed_sentiment_modelv2.bin"
+              },
+              "output_temp-output-path": ""
+            },
+            "component_description": "Read File from MinIO",
+            "label": "Load fine-tuned",
+            "component_source": "{'catalog_type': 'local-directory-catalog', 'component_ref': {'base_dir': '/home/jovyan/aiml_nlp/components', 'path': 'scoring_node/.ipynb_checkpoints/read_file_from_minio-checkpoint.yaml'}}",
+            "ui_data": {
+              "label": "Load fine-tuned",
+              "image": "/static/elyra/kubeflow.svg",
+              "x_pos": -126,
+              "y_pos": 324.5,
+              "description": "Read File from MinIO"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              }
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "app_data": {
+        "ui_data": {
+          "comments": []
+        },
+        "version": 7,
+        "runtime_type": "KUBEFLOW_PIPELINES",
+        "properties": {
+          "name": "social-media_logging_sentiment_model",
+          "runtime": "Kubeflow Pipelines"
+        }
+      },
+      "runtime_ref": ""
+    }
+  ],
+  "schemas": []
+}

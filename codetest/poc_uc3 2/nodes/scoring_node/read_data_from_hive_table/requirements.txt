@@ -1,0 +1,11 @@
+pathlib 
+argparse
+requests
+urllib3
+python-dotenv
+subprocess.run
+pydantic
+pytest-shutil
+datetime
+pyarrow
+fastparquet

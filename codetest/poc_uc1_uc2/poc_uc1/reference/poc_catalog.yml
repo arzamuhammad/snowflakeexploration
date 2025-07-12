@@ -1,0 +1,992 @@
+## elements :
+##  layer                     : layer of table (base | foundation)
+##  env                       :
+##  database                  : database name
+##  table                     : table name
+##  script_type               : script type provided (sql or pyspark)
+##  script_location           : location of pyspark query (sql or spark transformation)
+##  check_availability: scripts/check_availability/check.py
+##  write_conf                : configurations
+##    partition_columns       : list of partitions columns
+##      partition_names : datatype
+##      partition_names : datatype
+##    mode                    : append | overwrite
+##    schema                  : table's schema
+##      column_names  : datatype
+##      column_names2 : datatype
+##  read_conf                 : read configurations (tables name sources, filter columns, filter value)
+##     table_1:
+##       database: testing
+##       table : table_name1
+##       filter: source table filtering, use this format for date filter: `{~~~%Y-%m-%d:day=0~~~}`
+## **for date filter format, you can use `day`, `month` or `year` followed by delta e.g day=1 means yesterday's date
+
+## CATALOG EXAMPLE
+_rna_conf: &rna_conf
+  layer: agg
+  env: uat
+  database: testing
+  table: merge_revenue_ifrs_dd_poc_tokenized
+
+rul_wisdom_dd:
+  <<: *rna_conf
+  database: testing
+  table: rul_wisdom_dd_poc_tokenized
+  script_type: pyspark
+  script_location : scripts/rna/merge_revenue_ifrs_dd/rul_wisdom_dd.py
+  read_conf:
+    table_1:
+      database: testing
+      table: wisdom_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+    table_2:
+      database: testing
+      table: cb_profile_tnt_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+    table_3:
+      database: testing
+      table: lacci_dom_ifrs_chg_mtd_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+    table_4:
+      database: testing
+      table: lacci_dom_ifrs_chg_mm_poc_tokenized
+      filter_m1: "'{~~~%Y-%m-01:month=1~~~}'"
+  write_conf:
+    mode: overwrite
+    filesystem: parquet
+    repartition_num: 5
+    partition_columns:
+      event_date: string
+    schema:
+      trx_date: string
+      transaction_id: string
+      sku: string
+      business_id: string
+      rules_id: string
+      msisdn: string
+      brand: string
+      region_hlr: string
+      non_usage_flag: string
+      allowance_subtype: string
+      allowances_descriptions: string
+      quota_name: string
+      bonus_apps_id: string
+      profile_name: string
+      cust_type_desc: string
+      cust_subtype_desc: string
+      customer_sub_segment: string
+      lacci_id: string
+      area_sales: string
+      region_sales: string
+      branch: string
+      subbranch: string
+      cluster_sales: string
+      provinsi: string
+      kabupaten: string
+      kecamatan: string
+      kelurahan: string
+      node_type: string
+      charge: decimal(18,6)
+      rev: decimal(18,6)
+
+merge_revenue_ifrs_dd_wisdom:
+  <<: *rna_conf
+  script_type: pyspark
+  script_location : scripts/rna/merge_revenue_ifrs_dd/merge_revenue_ifrs_dd_wisdom.py
+  check_availability: scripts/check_availability/check.py
+  read_conf:
+    table_1:
+      database: testing
+      table: rul_wisdom_dd_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+    table_2:
+      database: testing
+      table: subs_ocs_spp_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+    table_3:
+      database: testing
+      table: usage_ocs_chg_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_first: "'{~~~%Y-%m-01:day=0~~~}'"
+      filter_last: "'{~~~%Y-%m-%d:day=2~~~}'"
+    table_4:
+      database: testing
+      table: ocs_chg_reject_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=0~~~}'"
+      filter_first: "'{~~~%Y-%m-01:day=0~~~}'"
+      filter_last: "'{~~~%Y-%m-%d:day=2~~~}'"
+    table_5:
+      database: testing
+      table: evoucher_redeem_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_first: "'{~~~%Y-%m-01:day=0~~~}'"
+      filter_last: "'{~~~%Y-%m-%d:day=2~~~}'"
+    table_6:
+      database: testing
+      table: evoucher_redeem_reject_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=0~~~}'"
+      filter_first: "'{~~~%Y-%m-01:day=0~~~}'"
+      filter_last: "'{~~~%Y-%m-%d:day=2~~~}'"
+    table_7:
+      database: testing
+      table: mkios_evcrec_evcvas_ngrs_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_first: "'{~~~%Y-%m-01:day=0~~~}'"
+      filter_last: "'{~~~%Y-%m-%d:day=2~~~}'"
+    table_8:
+      database: testing
+      table: mkios_evcrec_evcvas_ngrs_reject_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=0~~~}'"
+      filter_first: "'{~~~%Y-%m-01:day=0~~~}'"
+      filter_last: "'{~~~%Y-%m-%d:day=2~~~}'"
+  write_conf:
+    mode: overwrite
+    filesystem: parquet
+    repartition_num: 5
+    partition_columns:
+      load_date: string
+      event_date: string
+      source: string
+    schema:
+      trx_date: string
+      purchase_date: string
+      transaction_id: string
+      subs_id: string
+      msisdn: string
+      price_plan_id: int
+      brand: string
+      pre_post_flag: tinyint
+      cust_type_desc: string
+      cust_subtype_desc: string
+      customer_sub_segment: string
+      lac: string
+      ci: string
+      lacci_id: string
+      node: string
+      area_sales: string
+      region_sales: string
+      branch: string
+      subbranch: string
+      cluster_sales: string
+      provinsi: string
+      kabupaten: string
+      kecamatan: string
+      kelurahan: string
+      lacci_closing_flag: tinyint
+      sigma_business_id: string
+      sigma_rules_id: string
+      sku: string
+      l1_payu: string
+      l2_service_type: string
+      l3_allowance_type: string
+      l4_product_category: string
+      l5_product: string
+      l1_ias: string
+      l2_ias: string
+      l3_ias: string
+      commercial_name: string
+      channel: string
+      pack_validity: string
+      rev_per_usage: decimal(38,15)
+      rev_seized: decimal(38,15)
+      dur: int
+      trx: int
+      vol: bigint
+      cust_id: int
+      profile_name: string
+      quota_name: string
+      service_filter: string
+      price_plan_name: string
+      channel_id: string
+      site_id: string
+      site_name: string
+      region_hlr: string
+      city_hlr: string
+
+merge_revenue_ifrs_dd_chg:
+  <<: *rna_conf
+  script_type: pyspark
+  script_location : scripts/rna/merge_revenue_ifrs_dd/merge_revenue_ifrs_dd_chg.py
+  check_availability: scripts/check_availability/check.py
+  read_conf:
+    table_1:
+      database: testing
+      table: ifrs_tc_chg_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+  write_conf:
+    mode: overwrite
+    filesystem: parquet
+    repartition_num: 15
+    partition_columns:
+      load_date: string
+      event_date: string
+      source: string
+    schema:
+      trx_date: string
+      purchase_date: string
+      transaction_id: string
+      subs_id: string
+      msisdn: string
+      price_plan_id: int
+      brand: string
+      pre_post_flag: tinyint
+      cust_type_desc: string
+      cust_subtype_desc: string
+      customer_sub_segment: string
+      lac: string
+      ci: string
+      lacci_id: string
+      node: string
+      area_sales: string
+      region_sales: string
+      branch: string
+      subbranch: string
+      cluster_sales: string
+      provinsi: string
+      kabupaten: string
+      kecamatan: string
+      kelurahan: string
+      lacci_closing_flag: tinyint
+      sigma_business_id: string
+      sigma_rules_id: string
+      sku: string
+      l1_payu: string
+      l2_service_type: string
+      l3_allowance_type: string
+      l4_product_category: string
+      l5_product: string
+      l1_ias: string
+      l2_ias: string
+      l3_ias: string
+      commercial_name: string
+      channel: string
+      pack_validity: string
+      rev_per_usage: decimal(38,15)
+      rev_seized: decimal(38,15)
+      dur: int
+      trx: int
+      vol: bigint
+      cust_id: int
+      profile_name: string
+      quota_name: string
+      service_filter: string
+      price_plan_name: string
+      channel_id: string
+      site_id: string
+      site_name: string
+      region_hlr: string
+      city_hlr: string
+
+merge_revenue_ifrs_dd_seized:
+  <<: *rna_conf
+  script_type: pyspark
+  script_location : scripts/rna/merge_revenue_ifrs_dd/merge_revenue_ifrs_dd_seized.py
+  check_availability: scripts/check_availability/check.py
+  read_conf:
+    table_1:
+      database: testing
+      table: ifrs_bonus_seizure_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+  write_conf:
+    mode: overwrite
+    filesystem: parquet
+    repartition_num: 5
+    partition_columns:
+      load_date: string
+      event_date: string
+      source: string
+    schema:
+      trx_date: string
+      purchase_date: string
+      transaction_id: string
+      subs_id: string
+      msisdn: string
+      price_plan_id: int
+      brand: string
+      pre_post_flag: tinyint
+      cust_type_desc: string
+      cust_subtype_desc: string
+      customer_sub_segment: string
+      lac: string
+      ci: string
+      lacci_id: string
+      node: string
+      area_sales: string
+      region_sales: string
+      branch: string
+      subbranch: string
+      cluster_sales: string
+      provinsi: string
+      kabupaten: string
+      kecamatan: string
+      kelurahan: string
+      lacci_closing_flag: tinyint
+      sigma_business_id: string
+      sigma_rules_id: string
+      sku: string
+      l1_payu: string
+      l2_service_type: string
+      l3_allowance_type: string
+      l4_product_category: string
+      l5_product: string
+      l1_ias: string
+      l2_ias: string
+      l3_ias: string
+      commercial_name: string
+      channel: string
+      pack_validity: string
+      rev_per_usage: decimal(38,15)
+      rev_seized: decimal(38,15)
+      dur: int
+      trx: int
+      vol: bigint
+      cust_id: int
+      profile_name: string
+      quota_name: string
+      service_filter: string
+      price_plan_name: string
+      channel_id: string
+      site_id: string
+      site_name: string
+      region_hlr: string
+      city_hlr: string
+
+merge_revenue_ifrs_dd_upcc:
+  <<: *rna_conf
+  script_type: pyspark
+  script_location : scripts/rna/merge_revenue_ifrs_dd/merge_revenue_ifrs_dd_upcc.py
+  check_availability: scripts/check_availability/check.py
+  read_conf:
+    table_1:
+      database: testing
+      table: usage_upcc_edr_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+  write_conf:
+    mode: overwrite
+    filesystem: parquet
+    repartition_num: 100
+    partition_columns:
+      load_date: string
+      event_date: string
+      source: string
+    schema:
+      trx_date: string
+      purchase_date: string
+      transaction_id: string
+      subs_id: string
+      msisdn: string
+      price_plan_id: int
+      brand: string
+      pre_post_flag: tinyint
+      cust_type_desc: string
+      cust_subtype_desc: string
+      customer_sub_segment: string
+      lac: string
+      ci: string
+      lacci_id: string
+      node: string
+      area_sales: string
+      region_sales: string
+      branch: string
+      subbranch: string
+      cluster_sales: string
+      provinsi: string
+      kabupaten: string
+      kecamatan: string
+      kelurahan: string
+      lacci_closing_flag: tinyint
+      sigma_business_id: string
+      sigma_rules_id: string
+      sku: string
+      l1_payu: string
+      l2_service_type: string
+      l3_allowance_type: string
+      l4_product_category: string
+      l5_product: string
+      l1_ias: string
+      l2_ias: string
+      l3_ias: string
+      commercial_name: string
+      channel: string
+      pack_validity: string
+      rev_per_usage: decimal(38,15)
+      rev_seized: decimal(38,15)
+      dur: int
+      trx: int
+      vol: bigint
+      cust_id: int
+      profile_name: string
+      quota_name: string
+      service_filter: string
+      price_plan_name: string
+      channel_id: string
+      site_id: string
+      site_name: string
+      region_hlr: string
+      city_hlr: string
+
+merge_revenue_ifrs_dd_payu:
+  <<: *rna_conf
+  script_type: pyspark
+  script_location : scripts/rna/merge_revenue_ifrs_dd/merge_revenue_ifrs_dd_payu.py
+  check_availability: scripts/check_availability/check.py
+  read_conf:
+    table_1:
+      database: testing
+      table: merge_revenue_dd_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+    table_2:
+      database: testing
+      table: product_catalog_ifrs_c2c_dd_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+  write_conf:
+    mode: overwrite
+    filesystem: parquet
+    repartition_num: 15
+    partition_columns:
+      load_date: string
+      event_date: string
+      source: string
+    schema:
+      trx_date: string
+      purchase_date: string
+      transaction_id: string
+      subs_id: string
+      msisdn: string
+      price_plan_id: int
+      brand: string
+      pre_post_flag: tinyint
+      cust_type_desc: string
+      cust_subtype_desc: string
+      customer_sub_segment: string
+      lac: string
+      ci: string
+      lacci_id: string
+      node: string
+      area_sales: string
+      region_sales: string
+      branch: string
+      subbranch: string
+      cluster_sales: string
+      provinsi: string
+      kabupaten: string
+      kecamatan: string
+      kelurahan: string
+      lacci_closing_flag: tinyint
+      sigma_business_id: string
+      sigma_rules_id: string
+      sku: string
+      l1_payu: string
+      l2_service_type: string
+      l3_allowance_type: string
+      l4_product_category: string
+      l5_product: string
+      l1_ias: string
+      l2_ias: string
+      l3_ias: string
+      commercial_name: string
+      channel: string
+      pack_validity: string
+      rev_per_usage: decimal(38,15)
+      rev_seized: decimal(38,15)
+      dur: int
+      trx: int
+      vol: bigint
+      cust_id: int
+      profile_name: string
+      quota_name: string
+      service_filter: string
+      price_plan_name: string
+      channel_id: string
+      site_id: string
+      site_name: string
+      region_hlr: string
+      city_hlr: string
+
+merge_revenue_ifrs_dd_pi:
+  <<: *rna_conf
+  script_type: pyspark
+  script_location : scripts/rna/merge_revenue_ifrs_dd/merge_revenue_ifrs_dd_pi.py
+  read_conf:
+    table_1:
+      database: testing
+      table: revenue_pi_dd_poc_tokenized
+      filter: "expiry_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+  write_conf:
+    mode: overwrite
+    filesystem: parquet
+    repartition_num: 5
+    partition_columns:
+      load_date: string
+      event_date: string
+      source: string
+    schema:
+      trx_date: string
+      purchase_date: string
+      transaction_id: string
+      subs_id: string
+      msisdn: string
+      price_plan_id: int
+      brand: string
+      pre_post_flag: tinyint
+      cust_type_desc: string
+      cust_subtype_desc: string
+      customer_sub_segment: string
+      lac: string
+      ci: string
+      lacci_id: string
+      node: string
+      area_sales: string
+      region_sales: string
+      branch: string
+      subbranch: string
+      cluster_sales: string
+      provinsi: string
+      kabupaten: string
+      kecamatan: string
+      kelurahan: string
+      lacci_closing_flag: tinyint
+      sigma_business_id: string
+      sigma_rules_id: string
+      sku: string
+      l1_payu: string
+      l2_service_type: string
+      l3_allowance_type: string
+      l4_product_category: string
+      l5_product: string
+      l1_ias: string
+      l2_ias: string
+      l3_ias: string
+      commercial_name: string
+      channel: string
+      pack_validity: string
+      rev_per_usage: decimal(38,15)
+      rev_seized: decimal(38,15)
+      dur: int
+      trx: int
+      vol: bigint
+      cust_id: int
+      profile_name: string
+      quota_name: string
+      service_filter: string
+      price_plan_name: string
+      channel_id: string
+      site_id: string
+      site_name: string
+      region_hlr: string
+      city_hlr: string
+
+merge_revenue_ifrs_dd_accrual:
+  <<: *rna_conf
+  script_type: pyspark
+  script_location : scripts/rna/merge_revenue_ifrs_dd/merge_revenue_ifrs_dd_accrual.py
+  read_conf:
+    table_1:
+      database: testing
+      table: ifrs_accrual_product_daily_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=1~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d1: "'{~~~%Y-%m-%d:day=1~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+  write_conf:
+    mode: overwrite
+    filesystem: parquet
+    repartition_num: 10
+    partition_columns:
+      load_date: string
+      event_date: string
+      source: string
+    schema:
+      trx_date: string
+      purchase_date: string
+      transaction_id: string
+      subs_id: string
+      msisdn: string
+      price_plan_id: int
+      brand: string
+      pre_post_flag: tinyint
+      cust_type_desc: string
+      cust_subtype_desc: string
+      customer_sub_segment: string
+      lac: string
+      ci: string
+      lacci_id: string
+      node: string
+      area_sales: string
+      region_sales: string
+      branch: string
+      subbranch: string
+      cluster_sales: string
+      provinsi: string
+      kabupaten: string
+      kecamatan: string
+      kelurahan: string
+      lacci_closing_flag: tinyint
+      sigma_business_id: string
+      sigma_rules_id: string
+      sku: string
+      l1_payu: string
+      l2_service_type: string
+      l3_allowance_type: string
+      l4_product_category: string
+      l5_product: string
+      l1_ias: string
+      l2_ias: string
+      l3_ias: string
+      commercial_name: string
+      channel: string
+      pack_validity: string
+      rev_per_usage: decimal(38,15)
+      rev_seized: decimal(38,15)
+      dur: int
+      trx: int
+      vol: bigint
+      cust_id: int
+      profile_name: string
+      quota_name: string
+      service_filter: string
+      price_plan_name: string
+      channel_id: string
+      site_id: string
+      site_name: string
+      region_hlr: string
+      city_hlr: string
+
+merge_revenue_ifrs_dd_nbp:
+  <<: *rna_conf
+  script_type: pyspark
+  script_location : scripts/rna/merge_revenue_ifrs_dd/merge_revenue_ifrs_dd_nbp.py
+  read_conf:
+    table_1:
+      database: testing
+      table: merge_revenue_dd_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+    table_2:
+      database: testing
+      table: product_catalog_ifrs_c2c_dd_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+    table_3:
+      database: testing
+      table: merge_revenue_ifrs_dd_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+  write_conf:
+    mode: overwrite
+    filesystem: parquet
+    repartition_num: 5
+    partition_columns:
+      load_date: string
+      event_date: string
+      source: string
+    schema:
+      trx_date: string
+      purchase_date: string
+      transaction_id: string
+      subs_id: string
+      msisdn: string
+      price_plan_id: int
+      brand: string
+      pre_post_flag: tinyint
+      cust_type_desc: string
+      cust_subtype_desc: string
+      customer_sub_segment: string
+      lac: string
+      ci: string
+      lacci_id: string
+      node: string
+      area_sales: string
+      region_sales: string
+      branch: string
+      subbranch: string
+      cluster_sales: string
+      provinsi: string
+      kabupaten: string
+      kecamatan: string
+      kelurahan: string
+      lacci_closing_flag: tinyint
+      sigma_business_id: string
+      sigma_rules_id: string
+      sku: string
+      l1_payu: string
+      l2_service_type: string
+      l3_allowance_type: string
+      l4_product_category: string
+      l5_product: string
+      l1_ias: string
+      l2_ias: string
+      l3_ias: string
+      commercial_name: string
+      channel: string
+      pack_validity: string
+      rev_per_usage: decimal(38,15)
+      rev_seized: decimal(38,15)
+      dur: int
+      trx: int
+      vol: bigint
+      cust_id: int
+      profile_name: string
+      quota_name: string
+      service_filter: string
+      price_plan_name: string
+      channel_id: string
+      site_id: string
+      site_name: string
+      region_hlr: string
+      city_hlr: string
+
+merge_revenue_ifrs_dd_overusage:
+  <<: *rna_conf
+  script_type: pyspark
+  script_location : scripts/rna/merge_revenue_ifrs_dd/merge_revenue_ifrs_dd_overusage.py
+  read_conf:
+    table_1:
+      database: testing
+      table: ifrs_cons_rate_and_outstanding_dd_poc_tokenized
+      filter: "load_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+  write_conf:
+    mode: overwrite
+    filesystem: parquet
+    repartition_num: 10
+    partition_columns:
+      load_date: string
+      event_date: string
+      source: string
+    schema:
+      trx_date: string
+      purchase_date: string
+      transaction_id: string
+      subs_id: string
+      msisdn: string
+      price_plan_id: int
+      brand: string
+      pre_post_flag: tinyint
+      cust_type_desc: string
+      cust_subtype_desc: string
+      customer_sub_segment: string
+      lac: string
+      ci: string
+      lacci_id: string
+      node: string
+      area_sales: string
+      region_sales: string
+      branch: string
+      subbranch: string
+      cluster_sales: string
+      provinsi: string
+      kabupaten: string
+      kecamatan: string
+      kelurahan: string
+      lacci_closing_flag: tinyint
+      sigma_business_id: string
+      sigma_rules_id: string
+      sku: string
+      l1_payu: string
+      l2_service_type: string
+      l3_allowance_type: string
+      l4_product_category: string
+      l5_product: string
+      l1_ias: string
+      l2_ias: string
+      l3_ias: string
+      commercial_name: string
+      channel: string
+      pack_validity: string
+      rev_per_usage: decimal(38,15)
+      rev_seized: decimal(38,15)
+      dur: int
+      trx: int
+      vol: bigint
+      cust_id: int
+      profile_name: string
+      quota_name: string
+      service_filter: string
+      price_plan_name: string
+      channel_id: string
+      site_id: string
+      site_name: string
+      region_hlr: string
+      city_hlr: string
+
+merge_revenue_ifrs_dd_stg_breakage:
+  <<: *rna_conf
+  table: stg_breakage_poc_tokenized
+  script_type: pyspark
+  script_location : scripts/rna/merge_revenue_ifrs_dd/merge_revenue_ifrs_dd_stg_breakage.py
+  check_availability: scripts/check_availability/check.py
+  read_conf:
+    table_1:
+      database: testing
+      table: wisdom_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+    table_2:
+      database: testing
+      table: cb_profile_tnt_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+    table_3:
+      database: testing
+      table: lacci_dom_ifrs_chg_mtd_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+    table_4:
+      database: testing
+      table: lacci_dom_ifrs_chg_mm_poc_tokenized
+      filter_m1: "'{~~~%Y-%m-01:month=1~~~}'"
+    table_5:
+      database: testing
+      table: breakage_reference_poc_tokenized
+  write_conf:
+    mode: overwrite
+    filesystem: parquet
+    repartition_num: 10
+    partition_columns:
+      event_date: string
+    schema:
+      trx_date: string
+      transaction_id: string
+      sku: string
+      business_id: string
+      rules_id: string
+      msisdn: string
+      brand: string
+      region_hlr: string
+      non_usage_flag: string
+      allowance: string
+      allowance_sub_type: string
+      allowances_descriptions: string
+      quota_name: string
+      bonus_apps_id: string
+      profile_name: string
+      cust_type_desc: string
+      cust_subtype_desc: string
+      customer_sub_segment: string
+      lacci_id: string
+      area_sales: string
+      region_sales: string
+      branch: string
+      subbranch: string
+      cluster_sales: string
+      provinsi: string
+      kabupaten: string
+      kecamatan: string
+      kelurahan: string
+      node_type: string
+      breakage: decimal(38,2)
+
+merge_revenue_ifrs_dd_breakage:
+  <<: *rna_conf
+  script_type: pyspark
+  script_location : scripts/rna/merge_revenue_ifrs_dd/merge_revenue_ifrs_dd_breakage.py
+  read_conf:
+    table_1:
+      database: testing
+      table: stg_breakage_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+    table_2:
+      database: testing
+      table: merge_revenue_ifrs_dd_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+      filter_month: "'{~~~%Y-%m:month=0~~~}'"
+    table_3:
+      database: testing
+      table: merge_revenue_dd_poc_tokenized
+      filter: "event_date = '{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d2: "'{~~~%Y-%m-%d:day=2~~~}'"
+      filter_d0: "'{~~~%Y-%m-%d:day=0~~~}'"
+    table_4:
+      database: testing
+      table: breakage_reference_poc_tokenized
+  write_conf:
+    mode: overwrite
+    filesystem: parquet
+    repartition_num: 20
+    partition_columns:
+      load_date: string
+      event_date: string
+      source: string
+    schema:
+      trx_date: string
+      purchase_date: string
+      transaction_id: string
+      subs_id: string
+      msisdn: string
+      price_plan_id: int
+      brand: string
+      pre_post_flag: tinyint
+      cust_type_desc: string
+      cust_subtype_desc: string
+      customer_sub_segment: string
+      lac: string
+      ci: string
+      lacci_id: string
+      node: string
+      area_sales: string
+      region_sales: string
+      branch: string
+      subbranch: string
+      cluster_sales: string
+      provinsi: string
+      kabupaten: string
+      kecamatan: string
+      kelurahan: string
+      lacci_closing_flag: tinyint
+      sigma_business_id: string
+      sigma_rules_id: string
+      sku: string
+      l1_payu: string
+      l2_service_type: string
+      l3_allowance_type: string
+      l4_product_category: string
+      l5_product: string
+      l1_ias: string
+      l2_ias: string
+      l3_ias: string
+      commercial_name: string
+      channel: string
+      pack_validity: string
+      rev_per_usage: decimal(38,15)
+      rev_seized: decimal(38,15)
+      dur: int
+      trx: int
+      vol: bigint
+      cust_id: int
+      profile_name: string
+      quota_name: string
+      service_filter: string
+      price_plan_name: string
+      channel_id: string
+      site_id: string
+      site_name: string
+      region_hlr: string
+      city_hlr: string

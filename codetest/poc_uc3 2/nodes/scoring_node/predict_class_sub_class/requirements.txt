@@ -1,0 +1,9 @@
+mlflow==2.9.2.dev.20240604001
+pandas
+torch
+transformers==4.46.3
+tokenizers==0.20.3
+cloudpickle==2.2.0
+numpy
+pyyaml
+# pickle

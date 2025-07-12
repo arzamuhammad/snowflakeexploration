@@ -1,0 +1,5 @@
+columns_to_include:
+  msisdn: "msisdn"
+  default_probability_score: "default_probability_score"
+  refresh_date: "refresh_date"
+  model_id: "model_id"

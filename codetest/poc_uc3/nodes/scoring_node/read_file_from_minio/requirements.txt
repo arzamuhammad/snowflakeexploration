@@ -1,0 +1,9 @@
+pathlib 
+minio==7.0.0
+argparse
+requests
+urllib3
+python-dotenv
+subprocess.run
+omegaconf
+pydantic
