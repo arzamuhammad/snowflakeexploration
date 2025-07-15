@@ -1,0 +1,38 @@
+[15/07/2025 11.20.14] Debug: Session id: 0f552bec-ad97-4d62-8e6b-5f58f82cb32c
+[15/07/2025 11.20.14] Debug: Code Processor information: Name :PythonSnowConvert, Version: 2.7.5.0
+[15/07/2025 11.20.14] Info: Starting to install license with key that ends with: cd87
+[15/07/2025 11.20.15] Info: License installation result: Success
+[15/07/2025 11.20.15] Info: Starting to validate parameters
+[15/07/2025 11.20.15] Info: Parameters to validate: 
+	Execution mode: Conversion
+	SqlFlavor: Databricks
+	ProjectName: Tsel Use Case 2 Conversion
+[15/07/2025 11.20.15] Info: Validation of parameters: Success
+[15/07/2025 11.20.15] Debug: Getting code descriptor
+[15/07/2025 11.20.15] Debug: Code descriptor information
+	Units: 6709
+	Units type: LOC
+	All file bytes: 442444
+	All found extensions: .ipynb
+[15/07/2025 11.20.15] Debug: Calculating fingerprint
+[15/07/2025 11.20.15] Debug: Fingerprint information Fingerprint(size=438288,projects=1)
+[15/07/2025 11.20.15] Info: Starting to validate active license
+[15/07/2025 11.20.15] Info: Active license validation: Success
+[15/07/2025 11.20.15] Debug: License information
+	License key ends with: cd87
+	Start date: 2025/07/15
+	Expiration date: 2026/01/11
+	Execution mode: Conversion
+	Unit type: Lines of Code
+	Created by: muhammad.ardiyan@snowflake.com
+	Remaining activations: -2
+	Products: SnowConvertPython
+[15/07/2025 11.20.15] Debug: Getting license
+[15/07/2025 11.20.15] Debug: License information
+	Status: Successful
+[15/07/2025 11.20.16] Debug: Starting the execution of the controller
+[15/07/2025 11.20.16] Debug: Executing the worker: PythonSnowConvert
+[15/07/2025 11.20.34] Debug: Finished executing the worker: PythonSnowConvert
+[15/07/2025 11.20.34] Info: Controller execution ended
+[15/07/2025 11.20.34] Info: Starting to upload the Assessment results
+[15/07/2025 11.20.37] Info: Successful assessment upload

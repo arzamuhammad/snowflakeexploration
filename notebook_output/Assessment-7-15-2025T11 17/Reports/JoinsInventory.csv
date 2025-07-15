@@ -1,0 +1,12 @@
+Element,ProjectId,FileId,Count,IsSelfJoin,HasLeftAlias,HasRightAlias,Line,Kind,SessionId,CellId,ExecutionId
+35,notebook,Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb,1,False,False,False,35,Outer,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,20,a1cbc006-17c0-4db1-a282-bccf0e51f12f
+123,notebook,Sample_2. Pipeline Periodically - Mobility Trip.ipynb,1,False,False,False,123,Left,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,11,a1cbc006-17c0-4db1-a282-bccf0e51f12f
+133,notebook,Sample_2. Pipeline Periodically - Mobility Trip.ipynb,1,False,False,False,133,Left,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,11,a1cbc006-17c0-4db1-a282-bccf0e51f12f
+142,notebook,Sample_2. Pipeline Periodically - Mobility Trip.ipynb,1,False,False,False,142,Left,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,11,a1cbc006-17c0-4db1-a282-bccf0e51f12f
+157,notebook,Sample_2. Pipeline Periodically - Mobility Trip.ipynb,1,False,False,False,157,Left,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,11,a1cbc006-17c0-4db1-a282-bccf0e51f12f
+110,notebook,Sample_3a. Pipeline Periodically - Tourism.ipynb,1,False,True,True,110,Inner,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,12,a1cbc006-17c0-4db1-a282-bccf0e51f12f
+121,notebook,Sample_3a. Pipeline Periodically - Tourism.ipynb,1,False,True,True,121,Left,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,12,a1cbc006-17c0-4db1-a282-bccf0e51f12f
+195,notebook,Sample_3a. Pipeline Periodically - Tourism.ipynb,1,False,False,False,195,Left,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,12,a1cbc006-17c0-4db1-a282-bccf0e51f12f
+195.199,notebook,Sample_3a. Pipeline Periodically - Tourism.ipynb,1,False,False,False,199,Left,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,12,a1cbc006-17c0-4db1-a282-bccf0e51f12f
+207,notebook,Sample_3a. Pipeline Periodically - Tourism.ipynb,1,False,False,False,207,Left,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,12,a1cbc006-17c0-4db1-a282-bccf0e51f12f
+226,notebook,Sample_3a. Pipeline Periodically - Tourism.ipynb,1,False,False,False,226,Right,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,12,a1cbc006-17c0-4db1-a282-bccf0e51f12f

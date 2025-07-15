@@ -1,0 +1,315 @@
+[15/07/2025 11.20.17] Info: -------------------------------- Configuration --------------------------------
+[15/07/2025 11.20.17] Info:     Base execution info:
+[15/07/2025 11.20.17] Info:         Engine Core Version: 8.00.019
+[15/07/2025 11.20.17] Info:         Execution Id: b1fb77a9-958a-495d-82c1-be5dfafc0af9
+[15/07/2025 11.20.17] Info:         Session Id: 0f552bec-ad97-4d62-8e6b-5f58f82cb32c
+[15/07/2025 11.20.17] Info:         License Id: 299aef10-f1f0-4402-b8cc-aa8e949ecd87
+[15/07/2025 11.20.17] Info:         Start Timestamp: 20250715.112016
+[15/07/2025 11.20.17] Info:     Execution parameters:
+[15/07/2025 11.20.17] Info:         Execution Mode: Conversion
+[15/07/2025 11.20.17] Info:         Input Code Path: /Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook
+[15/07/2025 11.20.17] Info:         Output Code Path: /Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook_output/Conversion-7-15-2025T11 19/Output/PythonSnowConvert
+[15/07/2025 11.20.17] Info:         Reports Path: /Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook_output/Conversion-7-15-2025T11 19/Reports/PythonSnowConvert
+[15/07/2025 11.20.17] Info:         Logs Path: /Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook_output/Conversion-7-15-2025T11 19/Logs/PythonSnowConvert
+[15/07/2025 11.20.17] Info:     Additional execution parameters:
+[15/07/2025 11.20.17] Info:         SqlFlavor: Databricks
+[15/07/2025 11.20.17] Info:         ProjectName: Tsel Use Case 2 Conversion
+[15/07/2025 11.20.17] Info:         OwnerEmail: muhammad.ardiyan@snowflake.com
+[15/07/2025 11.20.17] Info:         OwnerCompany: Snowflake
+[15/07/2025 11.20.17] Info:         IsInputDirectory: True
+[15/07/2025 11.20.17] Info:         CommonEF: /Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook_output/Conversion-7-15-2025T11 19/.mobilize/CommonEF
+[15/07/2025 11.20.17] Info:         Root: /Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook_output/Conversion-7-15-2025T11 19
+[15/07/2025 11.20.17] Info:         OwnerName: Muhammad Ardiyan
+[15/07/2025 11.20.17] Info:         LicenseKey: 299aef10-f1f0-4402-b8cc-aa8e949ecd87
+[15/07/2025 11.20.17] Info:         AccessLevel: General Availability
+[15/07/2025 11.20.17] Info:         AppVersion: 2.7.5.0
+[15/07/2025 11.20.17] Info:     Custom execution parameters:
+[15/07/2025 11.20.17] Info:         enable_debug_logging: False
+[15/07/2025 11.20.17] Info:         disable_conversion: False
+[15/07/2025 11.20.17] Info:         use_short_file_ids: False
+[15/07/2025 11.20.17] Info:         enable_normalize_indentation: False
+[15/07/2025 11.20.17] Info:         py_symbol_table_timeout: 25
+[15/07/2025 11.20.17] Info:         scl_symbol_table_timeout: 25
+[15/07/2025 11.20.17] Info:         scl_parser_timeout: 2000
+[15/07/2025 11.20.17] Info:         enable_ignored_directories: True
+[15/07/2025 11.20.17] Info:         enable_log_only_on_error: True
+[15/07/2025 11.20.17] Info:         parallelize: True
+[15/07/2025 11.20.17] Info: -------------------------------------------------------------------------------
+[15/07/2025 11.20.17] Info: [SMA] Starting the parsing process of 4 files with 0,42MB of code, this might take a while...
+[15/07/2025 11.20.17] Info: [SMA] Current Sql Source language: Databricks
+[15/07/2025 11.20.19] Info: EFProcess 638881752197169740 started
+[15/07/2025 11.20.19] Info: [SMA] Step 1/20 - Loading the mapping files: STARTED
+[15/07/2025 11.20.19] Info: [SMA] Total .map files load: 7
+[15/07/2025 11.20.19] Info: [SMA] Step 1/20 - Loading the mapping files: COMPLETED
+[15/07/2025 11.20.19] Info: [SMA] Step 2/20 - Extraction of dbc files: STARTED
+[15/07/2025 11.20.19] Info: [SMA] Step 2/20 - Extraction of dbc files: COMPLETED
+[15/07/2025 11.20.19] Info: [SMA] Step 3/20 - Process exported notebook source code: STARTED
+[15/07/2025 11.20.19] Info: [SMA] Step 3/20 - Process exported notebook source code: COMPLETED
+[15/07/2025 11.20.19] Info: [SMA] Step 4/20 - Generating project: STARTED
+[15/07/2025 11.20.19] Info: [SMA] Step 4/20 - Generating project: COMPLETED
+[15/07/2025 11.20.19] Info: [SMA] Step 5/20 - Processing input files: STARTED
+[15/07/2025 11.20.19] Info: Found 3 Jupyter notebook files with a total size of 0,42MB
+[15/07/2025 11.20.19] Info: Found 1 Other files with a total size of 4,41KB
+[15/07/2025 11.20.19] Info: Found 0 Databricks notebook files
+[15/07/2025 11.20.19] Info: Found 0 Sql files
+[15/07/2025 11.20.19] Info: Found 0 HiveSql files
+[15/07/2025 11.20.19] Info: Found 0 Python files
+[15/07/2025 11.20.19] Info: Found 0 Scala files
+[15/07/2025 11.20.19] Info: Found 0 Java files
+[15/07/2025 11.20.19] Info: [SMA] Step 5/20 - Processing input files: COMPLETED
+[15/07/2025 11.20.20] Info: [SMA] Step 6/20 - Conversion begin: STARTED
+[15/07/2025 11.20.23] Info:     [SMA] START Conversion begin of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb'
+[15/07/2025 11.20.23] Info:     [SMA] FINISH Conversion begin of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb'
+[15/07/2025 11.20.23] Info:     [SMA] START Conversion begin of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_3a. Pipeline Periodically - Tourism.ipynb'
+[15/07/2025 11.20.23] Info:     [SMA] FINISH Conversion begin of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_3a. Pipeline Periodically - Tourism.ipynb'
+[15/07/2025 11.20.23] Info:     [SMA] START Conversion begin of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_2. Pipeline Periodically - Mobility Trip.ipynb'
+[15/07/2025 11.20.23] Info:     [SMA] FINISH Conversion begin of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_2. Pipeline Periodically - Mobility Trip.ipynb'
+[15/07/2025 11.20.23] Info: [SMA] Step 6/20 - Conversion begin: COMPLETED
+[15/07/2025 11.20.23] Info: [SMA] Step 7/20 - Processing parsing errors: STARTED
+[15/07/2025 11.20.23] Info:     [SMA] START Processing parsing errors of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_3a. Pipeline Periodically - Tourism.ipynb'
+[15/07/2025 11.20.23] Info:     [SMA] START Processing parsing errors of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb'
+[15/07/2025 11.20.23] Info:     [SMA] START Processing parsing errors of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_2. Pipeline Periodically - Mobility Trip.ipynb'
+[15/07/2025 11.20.23] Info:     [SMA] FINISH Processing parsing errors of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb'
+[15/07/2025 11.20.23] Info:     [SMA] FINISH Processing parsing errors of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_2. Pipeline Periodically - Mobility Trip.ipynb'
+[15/07/2025 11.20.23] Info:     [SMA] FINISH Processing parsing errors of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_3a. Pipeline Periodically - Tourism.ipynb'
+[15/07/2025 11.20.23] Info: [SMA] Step 7/20 - Processing parsing errors: COMPLETED
+[15/07/2025 11.20.23] Info: [SMA] Step 8/20 - Load Symbol Table: STARTED
+[15/07/2025 11.20.23] Info: [SMA] Start loading Python symbols
+[15/07/2025 11.20.24] Info: [SMA] Done loading Python symbols
+[15/07/2025 11.20.24] Info: [SMA] Start loading Scala symbols
+[15/07/2025 11.20.26] Info: [SMA] Done loading Scala symbols
+[15/07/2025 11.20.26] Info: [SMA] Start parsing source files:
+[15/07/2025 11.20.26] Info: [SMA] - Parsing file :/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb
+[15/07/2025 11.20.26] Info: [SMA] - Done parsing file /Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb
+[15/07/2025 11.20.26] Info: [SMA] - Parsing file :/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_2. Pipeline Periodically - Mobility Trip.ipynb
+[15/07/2025 11.20.26] Info: [SMA] - Done parsing file /Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_2. Pipeline Periodically - Mobility Trip.ipynb
+[15/07/2025 11.20.26] Info: [SMA] - Parsing file :/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_3a. Pipeline Periodically - Tourism.ipynb
+[15/07/2025 11.20.26] Info: [SMA] - Done parsing file /Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_3a. Pipeline Periodically - Tourism.ipynb
+[15/07/2025 11.20.26] Info: [SMA] Done parsing source files
+[15/07/2025 11.20.26] Info: [SMA] Start loading input source symbols:
+[15/07/2025 11.20.26] Info:     [SMA] Start loading Python input source symbols:
+[15/07/2025 11.20.27] Info:   Iteration: 0 Phase: Visit_1: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 0 Phase: Visit_1: COMPLETED
+[15/07/2025 11.20.28] Info:   Iteration: 1 Phase: Visit_2: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 1 Phase: Visit_2: COMPLETED
+[15/07/2025 11.20.28] Info:   Iteration: 2 Phase: Visit_2: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 2 Phase: Visit_2: COMPLETED
+[15/07/2025 11.20.28] Info:   Iteration: 3 Phase: Visit_3: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 3 Phase: Visit_3: COMPLETED
+[15/07/2025 11.20.28] Info:   Iteration: 4 Phase: Visit_4: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 4 Phase: Visit_4: COMPLETED
+[15/07/2025 11.20.28] Info:   Iteration: 5 Phase: Visit_2: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 5 Phase: Visit_2: COMPLETED
+[15/07/2025 11.20.28] Info:   Iteration: 6 Phase: Visit_2: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 6 Phase: Visit_2: COMPLETED
+[15/07/2025 11.20.28] Info:   Iteration: 7 Phase: Visit_2: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 7 Phase: Visit_2: COMPLETED
+[15/07/2025 11.20.28] Info:   Iteration: 8 Phase: Visit_3: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 8 Phase: Visit_3: COMPLETED
+[15/07/2025 11.20.28] Info:   Iteration: 9 Phase: Visit_4: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 9 Phase: Visit_4: COMPLETED
+[15/07/2025 11.20.28] Info:   Iteration: 10 Phase: Visit_2: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 10 Phase: Visit_2: COMPLETED
+[15/07/2025 11.20.28] Info:   Iteration: 11 Phase: Visit_2: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 11 Phase: Visit_2: COMPLETED
+[15/07/2025 11.20.28] Info:   Iteration: 12 Phase: Visit_3: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 12 Phase: Visit_3: COMPLETED
+[15/07/2025 11.20.28] Info:   Iteration: 13 Phase: Visit_4: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 13 Phase: Visit_4: COMPLETED
+[15/07/2025 11.20.28] Info:   Iteration: 14 Phase: Final_Visit: STARTED
+[15/07/2025 11.20.28] Info:   Iteration: 14 Phase: Final_Visit: COMPLETED
+[15/07/2025 11.20.28] Info:     [SMA] Done loading Python input source symbols
+[15/07/2025 11.20.28] Info:     [SMA] Start loading Scala input source symbols:
+[15/07/2025 11.20.30] Info:     Iteration: 0 Phase: Visit_1: STARTED
+[15/07/2025 11.20.30] Info:     Iteration: 0 Phase: Visit_1: COMPLETED
+[15/07/2025 11.20.30] Info:     Iteration: 1 Phase: Visit_2: STARTED
+[15/07/2025 11.20.30] Info:     Iteration: 1 Phase: Visit_2: COMPLETED
+[15/07/2025 11.20.30] Info:     Iteration: 2 Phase: Final_Visit: STARTED
+[15/07/2025 11.20.30] Info:     Iteration: 2 Phase: Final_Visit: COMPLETED
+[15/07/2025 11.20.30] Info:     [SMA] Done loading Scala input source symbols
+[15/07/2025 11.20.30] Info: [SMA] Done loading input source symbols
+[15/07/2025 11.20.30] Info: [SMA] Step 8/20 - Load Symbol Table: COMPLETED
+[15/07/2025 11.20.30] Info: [SMA] Step 9/20 - SQL literal processing task: STARTED
+[15/07/2025 11.20.30] Info:     [SMA] START SQL literal processing task of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb'
+[15/07/2025 11.20.30] Info:     [SMA] START SQL literal processing task of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_3a. Pipeline Periodically - Tourism.ipynb'
+[15/07/2025 11.20.30] Info:     [SMA] START SQL literal processing task of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_2. Pipeline Periodically - Mobility Trip.ipynb'
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Tables STARTED
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Tables STARTED
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Tables STARTED
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Tables COMPLETED
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Tables COMPLETED
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Tables COMPLETED
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Objects STARTED
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Objects STARTED
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Objects STARTED
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Objects COMPLETED
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Objects COMPLETED
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Objects COMPLETED
+[15/07/2025 11.20.30] Info:     [SMA] FINISH SQL literal processing task of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_3a. Pipeline Periodically - Tourism.ipynb'
+[15/07/2025 11.20.30] Info:     [SMA] FINISH SQL literal processing task of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_2. Pipeline Periodically - Mobility Trip.ipynb'
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Tables STARTED
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Tables COMPLETED
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Objects STARTED
+[15/07/2025 11.20.30] Info: [SC] Semantic Analysis of SQL Objects COMPLETED
+[15/07/2025 11.20.30] Info:     [SMA] FINISH SQL literal processing task of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb'
+[15/07/2025 11.20.30] Info: [SMA] Step 9/20 - SQL literal processing task: COMPLETED
+[15/07/2025 11.20.30] Info: [SMA] Step 10/20 - Pre-Collect data: STARTED
+[15/07/2025 11.20.30] Info:     [SMA] START Pre-Collect data of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb'
+[15/07/2025 11.20.30] Info:     [SMA] START Pre-Collect data of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_2. Pipeline Periodically - Mobility Trip.ipynb'
+[15/07/2025 11.20.30] Info:     [SMA] START Pre-Collect data of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_3a. Pipeline Periodically - Tourism.ipynb'
+[15/07/2025 11.20.30] Info:     [SMA] FINISH Pre-Collect data of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_3a. Pipeline Periodically - Tourism.ipynb'
+[15/07/2025 11.20.30] Info:     [SMA] FINISH Pre-Collect data of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb'
+[15/07/2025 11.20.30] Info:     [SMA] FINISH Pre-Collect data of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_2. Pipeline Periodically - Mobility Trip.ipynb'
+[15/07/2025 11.20.30] Info:     [SMA] START ending the 'Pre-Collect data' base task
+[15/07/2025 11.20.30] Info:         [SMA] START disposing CSV inventories
+[15/07/2025 11.20.30] Info:         [SMA] FINISH disposing CSV inventories
+[15/07/2025 11.20.30] Info:     [SMA] FINISH ending the 'Pre-Collect data' base task
+[15/07/2025 11.20.30] Info: [SMA] Step 10/20 - Pre-Collect data: COMPLETED
+[15/07/2025 11.20.30] Info: [SMA] Step 11/20 - Collect data: STARTED
+[15/07/2025 11.20.30] Info:     [SMA] START Collect data of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_2. Pipeline Periodically - Mobility Trip.ipynb'
+[15/07/2025 11.20.30] Info:     [SMA] START Collect data of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_3a. Pipeline Periodically - Tourism.ipynb'
+[15/07/2025 11.20.30] Info:     [SMA] START Collect data of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb'
+[15/07/2025 11.20.31] Info:     [SMA] FINISH Collect data of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb'
+[15/07/2025 11.20.31] Info:     [SMA] FINISH Collect data of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_3a. Pipeline Periodically - Tourism.ipynb'
+[15/07/2025 11.20.31] Info:     [SMA] FINISH Collect data of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_2. Pipeline Periodically - Mobility Trip.ipynb'
+[15/07/2025 11.20.31] Info:     [SMA] START ending the 'Collect data' base task
+[15/07/2025 11.20.31] Info:         [SMA] START generating InputFilesInventory.csv file
+[15/07/2025 11.20.31] Info:         [SMA] FINISH generating InputFilesInventory.csv file
+[15/07/2025 11.20.31] Info:         [SMA] START disposing CSV inventories
+[15/07/2025 11.20.31] Info:         [SMA] FINISH disposing CSV inventories
+[15/07/2025 11.20.31] Info:         [SMA] START generating checkpoint files
+[15/07/2025 11.20.31] Info:         [SMA] FINISH generating checkpoint files
+[15/07/2025 11.20.31] Info:     [SMA] FINISH ending the 'Collect data' base task
+[15/07/2025 11.20.31] Info: [SMA] Step 11/20 - Collect data: COMPLETED
+[15/07/2025 11.20.31] Info: [SMA] Step 12/20 - Processing of Java files: STARTED
+[15/07/2025 11.20.31] Info: [SMA] Step 12/20 - Processing of Java files: COMPLETED
+[15/07/2025 11.20.31] Info: [SMA] Step 13/20 - Collecting package version info: STARTED
+[15/07/2025 11.20.31] Info: [SMA] Step 13/20 - Collecting package version info: COMPLETED
+[15/07/2025 11.20.31] Info: [SMA] Step 14/20 - Creation of stored procedures for entry points: STARTED
+[15/07/2025 11.20.31] Warning: Loading entry points file: /Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/SProcEntryPoints.txt failed
+[15/07/2025 11.20.31] Warning: Loading entry points file: /Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/SProcEntryPoints.txt failed
+[15/07/2025 11.20.31] Info: [SMA] Step 14/20 - Creation of stored procedures for entry points: COMPLETED
+[15/07/2025 11.20.31] Info: [SMA] Step 15/20 - Copying other files: STARTED
+[15/07/2025 11.20.31] Info: [SMA] Step 15/20 - Copying other files: COMPLETED
+[15/07/2025 11.20.31] Info: [SMA] Step 16/20 - Transformation: STARTED
+[15/07/2025 11.20.31] Info:     [SMA] START Transformation of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb'
+[15/07/2025 11.20.31] Info:     [SMA] START Transformation of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_2. Pipeline Periodically - Mobility Trip.ipynb'
+[15/07/2025 11.20.31] Info:     [SMA] START Transformation of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_3a. Pipeline Periodically - Tourism.ipynb'
+[15/07/2025 11.20.32] Info:     [SMA] FINISH Transformation of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb'
+[15/07/2025 11.20.32] Info:     [SMA] FINISH Transformation of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_3a. Pipeline Periodically - Tourism.ipynb'
+[15/07/2025 11.20.32] Info:     [SMA] FINISH Transformation of '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/Sample_2. Pipeline Periodically - Mobility Trip.ipynb'
+[15/07/2025 11.20.32] Info: [SMA] Step 16/20 - Transformation: COMPLETED
+[15/07/2025 11.20.32] Info: [SMA] Step 17/20 - Compressing dbc folders: STARTED
+[15/07/2025 11.20.32] Info: [SMA] Step 17/20 - Compressing dbc folders: COMPLETED
+[15/07/2025 11.20.32] Info: [SMA] Step 18/20 - Cleaning of dbc files extracted: STARTED
+[15/07/2025 11.20.32] Info: [SMA] Step 18/20 - Cleaning of dbc files extracted: COMPLETED
+[15/07/2025 11.20.32] Info: [SMA] Step 19/20 - Clean exported code notebook files: STARTED
+[15/07/2025 11.20.32] Info: [SMA] The folder '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook/SMA_ConvertedNotebooks_2025-07-15_11-20-16' was successfully removed.
+[15/07/2025 11.20.32] Info: [SMA] The folder '/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook_output/Conversion-7-15-2025T11 19/Output/PythonSnowConvert/SMA_ConvertedNotebooks_2025-07-15_11-20-16' was successfully removed.
+[15/07/2025 11.20.32] Info: [SMA] Step 19/20 - Clean exported code notebook files: COMPLETED
+[15/07/2025 11.20.32] Info: [SMA] Step 20/20 - Conversion end: STARTED
+[15/07/2025 11.20.32] Info: [SMA] Step 20/20 - Conversion end: COMPLETED
+[15/07/2025 11.20.32] Info: EFProcess 638881752197169740 ended. Execution time: 00:00:13.1280064
+[15/07/2025 11.20.33] Info: [SC] Writing the conversion summary report
+[15/07/2025 11.20.33] Info: [SC] Writing the Assessment report
+[15/07/2025 11.20.33] Info: [SC] Writing the Scope Validations report
+[15/07/2025 11.20.33] Info: [SC] Writing the raw assessment data report
+[15/07/2025 11.20.33] Info: [SC] Writing the Elements report
+[15/07/2025 11.20.33] Info: [SC] Writing the ETL and BI repointing report
+[15/07/2025 11.20.33] Info: [SC] Writing the Issues report
+[15/07/2025 11.20.33] Info: [SC] Writing the missing objects report
+[15/07/2025 11.20.33] Info: [SC] Writing the object references report
+[15/07/2025 11.20.33] Info: [SC] Writing the top level code unit report
+[15/07/2025 11.20.33] Info: [SC] Writing the Functions Inventory Report report
+[15/07/2025 11.20.33] Info: 
+==============================================================================
+SnowConvert assessment execution summary
+ - Files: 0
+ - Files Not Generated: 0
+ - Total lines of code: 4
+ - Automatically converted: 0%
+ - Conversion time: 00:00:13
+ - Conversion speed: 0 lines of code per second
+See the report files for more details about the conversion status.
+==============================================================================
+
+[15/07/2025 11.20.33] Info: 
+==============================================================================
+SnowConvert Tool.
+Copyright © 2023-2025 Snowflake Inc. All rights reserved.
+==============================================================================
+
+[15/07/2025 11.20.33] Info: Start finally process:
+[15/07/2025 11.20.33] Info:     Start AfterRunTask process:
+[15/07/2025 11.20.33] Info:         Start LogIdFiles:
+[15/07/2025 11.20.33] Info:         Done LogIdFiles
+[15/07/2025 11.20.33] Info:         Start GenerateIssuesCsvFile:
+[15/07/2025 11.20.33] Info:         Done GenerateIssuesCsvFile
+[15/07/2025 11.20.33] Info:         Start Calculation Results process:
+[15/07/2025 11.20.33] Info:             Getting issues
+[15/07/2025 11.20.33] Info:             Getting sparkApiUsagesInventory
+[15/07/2025 11.20.33] Info:             Getting importUsagesInventory
+[15/07/2025 11.20.33] Info:             Getting pandasUsagesInventory
+[15/07/2025 11.20.33] Info:             Getting dbxElementsInventory
+[15/07/2025 11.20.33] Info:             Getting inputFilesInventory
+[15/07/2025 11.20.33] Info:             Getting sqlElementsInventory
+[15/07/2025 11.20.33] Info:             Getting sqlFunctionsInventory
+[15/07/2025 11.20.33] Info:             Getting sqlEmbeddedUsageInventory
+[15/07/2025 11.20.33] Info:             Getting IoUsagesInventory
+[15/07/2025 11.20.33] Info:             Generating items for sparkApiUsagesInventory
+[15/07/2025 11.20.33] Info:             Generating items for importUsagesInventory
+[15/07/2025 11.20.33] Info:             Generating items for pandasUsagesInventory
+[15/07/2025 11.20.33] Info:             Generating items for dbxElementsInventory
+[15/07/2025 11.20.33] Info:             Generating items for inputFilesInventory
+[15/07/2025 11.20.33] Info:             Generating items for sqlElementsInventory
+[15/07/2025 11.20.33] Info:             Generating items for IoUsagesInventory
+[15/07/2025 11.20.33] Info:             Getting EWI Catalog
+[15/07/2025 11.20.34] Info:             Processing issues stats
+[15/07/2025 11.20.34] Info:             Processing assessment summary information
+[15/07/2025 11.20.34] Info:             Processing input files data
+[15/07/2025 11.20.34] Info:             Loading importUsagesData
+[15/07/2025 11.20.34] Info:             Loading thirdPartyImportsUsagesData
+[15/07/2025 11.20.34] Info:             Processing pandas information
+[15/07/2025 11.20.34] Info:             Processing dbx elements information
+[15/07/2025 11.20.34] Info:             Loading sqlElementsData
+[15/07/2025 11.20.34] Info:             Loading sparkApiUsagesData
+[15/07/2025 11.20.34] Info:             Storing usages calculation
+[15/07/2025 11.20.34] Info:             Storing import usages calculation
+[15/07/2025 11.20.34] Info:             Storing third party import usages calculation
+[15/07/2025 11.20.34] Info:             Storing pandas usages calculation
+[15/07/2025 11.20.34] Info:             Storing input files calculation
+[15/07/2025 11.20.34] Info:             Storing sql elements calculation
+[15/07/2025 11.20.34] Info:             Generating file type summary table
+[15/07/2025 11.20.34] Info:             Processing sizing information
+[15/07/2025 11.20.34] Info:             Processing notebook sizing information
+[15/07/2025 11.20.34] Info:             Processing parsing calculation
+[15/07/2025 11.20.34] Info:             Processing sql usages by type information
+[15/07/2025 11.20.34] Info:         Done Calculation Results process
+[15/07/2025 11.20.34] Info:         Starting artifact dependency inventory.
+[15/07/2025 11.20.34] Info:             Done compute the artifact dependency.
+[15/07/2025 11.20.34] Info:             Start write the artifact dependency inventory.
+[15/07/2025 11.20.34] Info:             Done write the artifact dependency inventory.
+[15/07/2025 11.20.34] Info:         Done artifact dependency inventory.
+[15/07/2025 11.20.34] Info:         Start adding execution summary data process
+[15/07/2025 11.20.34] Info:         Done adding execution summary data process
+[15/07/2025 11.20.34] Info:     Done AfterRunTask process
+[15/07/2025 11.20.34] Info:     Start AssessmentReports process
+[15/07/2025 11.20.34] Info:         Reports generation: STARTED
+[15/07/2025 11.20.34] Info:             Starting the assessment json report generation
+[15/07/2025 11.20.34] Info:                 Writing the assessment json report
+[15/07/2025 11.20.34] Info:             Finished the assessment json report generation
+[15/07/2025 11.20.34] Info:             Starting the assessment docx report generation
+[15/07/2025 11.20.34] Info:                 Writing the assessment docx report
+[15/07/2025 11.20.34] Info:             Finished the assessment docx report generation
+[15/07/2025 11.20.34] Info:         Reports generation: COMPLETED
+[15/07/2025 11.20.34] Info:     Done AssessmentReports process
+[15/07/2025 11.20.34] Info:     Start adding execution info file.
+[15/07/2025 11.20.34] Info:     Done adding execution info file.
+[15/07/2025 11.20.34] Info:     Start copying SnowConvert reports to assessment model
+[15/07/2025 11.20.34] Info:     Finish copying SnowConvert reports to assessment model
+[15/07/2025 11.20.34] Info:     Start Generating Assessment Zip File
+[15/07/2025 11.20.34] Info:         Start GenerateAssessmentZipFile
+[15/07/2025 11.20.34] Info:             The zip generation was successful
+[15/07/2025 11.20.34] Info:         Done GenerateAssessmentZipFile
+[15/07/2025 11.20.34] Info:     Done Generating Assessment Zip File
+[15/07/2025 11.20.34] Info: Done finally process

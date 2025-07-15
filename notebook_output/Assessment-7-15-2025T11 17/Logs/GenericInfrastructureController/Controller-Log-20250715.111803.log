@@ -1,0 +1,32 @@
+[15/07/2025 11.18.03] Debug: Session id: 0f552bec-ad97-4d62-8e6b-5f58f82cb32c
+[15/07/2025 11.18.03] Debug: Code Processor information: Name :PythonSnowConvert, Version: 2.7.5.0
+[15/07/2025 11.18.03] Info: Starting to validate parameters
+[15/07/2025 11.18.03] Info: Parameters to validate: 
+	Execution mode: Assessment
+	SqlFlavor: Databricks
+	ProjectName: Tsel Use Case 2 Conversion
+[15/07/2025 11.18.03] Info: Validation of parameters: Success
+[15/07/2025 11.18.03] Debug: Getting code descriptor
+[15/07/2025 11.18.04] Debug: Code descriptor information
+	Units: 6709
+	Units type: LOC
+	All file bytes: 438288
+	All found extensions: .ipynb
+[15/07/2025 11.18.04] Debug: Calculating fingerprint
+[15/07/2025 11.18.04] Debug: Fingerprint information Fingerprint(size=438288,projects=1)
+[15/07/2025 11.18.04] Info: Starting to validate active license
+[15/07/2025 11.18.04] Info: The product does not require a license, there is not a license to validate.
+[15/07/2025 11.18.04] Info: Active license validation: Success
+[15/07/2025 11.18.04] Debug: License information
+[15/07/2025 11.18.04] Debug: Getting license
+[15/07/2025 11.18.04] Info: The product does not require a license, there is not an active license.
+[15/07/2025 11.18.04] Debug: License information
+	Status: Successful
+[15/07/2025 11.18.04] Info: The product does not require a license, there is no license to install or activate.
+[15/07/2025 11.18.04] Debug: Starting the execution of the controller
+[15/07/2025 11.18.04] Debug: Executing the worker: PythonSnowConvert
+[15/07/2025 11.18.20] Debug: Finished executing the worker: PythonSnowConvert
+[15/07/2025 11.18.20] Info: The product does not require a license, the workload will not be applied.
+[15/07/2025 11.18.20] Info: Controller execution ended
+[15/07/2025 11.18.20] Info: Starting to upload the Assessment results
+[15/07/2025 11.18.23] Info: Successful assessment upload
