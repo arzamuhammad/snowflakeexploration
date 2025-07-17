@@ -1,4 +1,4 @@
-mlflow==2.9.2.dev20240604001
+mlflow==2.9.2
 pandas
 torch
 transformers==4.46.3
