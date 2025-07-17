@@ -1,0 +1,4 @@
+Element,ProjectId,FileId,Count,Alias,Kind,Line,PackageName,Supported,Automated,Status,Statement,SessionId,SnowConvertCoreVersion,SnowparkVersion,CellId,ExecutionId,ParametersInfo,Technology
+notebook.Sample_1. Pipeline Periodically - Usual Environment with Entropy,notebook,Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb,1,,,,,,,Invalid,,,,,,,,Python
+notebook.Sample_2. Pipeline Periodically - Mobility Trip,notebook,Sample_2. Pipeline Periodically - Mobility Trip.ipynb,1,,,,,,,Invalid,,,,,,,,Python
+notebook.Sample_3a. Pipeline Periodically - Tourism,notebook,Sample_3a. Pipeline Periodically - Tourism.ipynb,1,,,,,,,Invalid,,,,,,,,Python

@@ -1,0 +1,4 @@
+Element,ProjectId,FileId,Count,PythonLOC,ScalaLOC,SqlLOC,Line,SessionId,ExecutionId
+Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb,notebook,Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb,1,222,0,0,,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,a1cbc006-17c0-4db1-a282-bccf0e51f12f
+Sample_2. Pipeline Periodically - Mobility Trip.ipynb,notebook,Sample_2. Pipeline Periodically - Mobility Trip.ipynb,1,340,0,0,,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,a1cbc006-17c0-4db1-a282-bccf0e51f12f
+Sample_3a. Pipeline Periodically - Tourism.ipynb,notebook,Sample_3a. Pipeline Periodically - Tourism.ipynb,1,271,0,0,,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,a1cbc006-17c0-4db1-a282-bccf0e51f12f

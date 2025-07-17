@@ -1,0 +1,5 @@
+Element,ProjectId,FileId,Count,ExecutionId,LibraryName,HasLiteral,HasVariable,HasFunction,ParsingStatus,HasInterpolation,CellId,Line,Column
+q,notebook,Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb,1,b1fb77a9-958a-495d-82c1-be5dfafc0af9,pyspark.sql.session.SparkSession.sql,False,True,False,Failed,False,17,2,7
+q,notebook,Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb,1,b1fb77a9-958a-495d-82c1-be5dfafc0af9,pyspark.sql.session.SparkSession.sql,False,True,False,Failed,False,32,2,7
+q,notebook,Sample_2. Pipeline Periodically - Mobility Trip.ipynb,1,b1fb77a9-958a-495d-82c1-be5dfafc0af9,pyspark.sql.session.SparkSession.sql,False,True,False,Failed,False,22,2,7
+q,notebook,Sample_3a. Pipeline Periodically - Tourism.ipynb,1,b1fb77a9-958a-495d-82c1-be5dfafc0af9,pyspark.sql.session.SparkSession.sql,False,True,False,Failed,False,20,2,7

@@ -1,0 +1,133 @@
+{
+    "name": "Tsel Use Case 2 Conversion",
+    "guid": "068ea823-4840-4813-8a54-2deec120a0e6",
+    "inputPath": "/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook",
+    "outputPath": "/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook_output",
+    "platform": "SnowConvertPython",
+    "accesscode": "299aef10-f1f0-4402-b8cc-aa8e949ecd87",
+    "isDemo": false,
+    "steps": [
+        {
+            "name": "Project Creation",
+            "status": 1,
+            "active": false,
+            "disabled": true,
+            "steps": []
+        },
+        {
+            "name": "Assessment",
+            "status": 1,
+            "active": false,
+            "disabled": true,
+            "steps": [
+                {
+                    "name": "Execution",
+                    "status": 1,
+                    "disabled": true,
+                    "active": false,
+                    "expandOptions": {
+                        "isExpandable": true,
+                        "expand": true
+                    }
+                },
+                {
+                    "name": "Results",
+                    "status": 1,
+                    "disabled": true,
+                    "active": false,
+                    "expandOptions": {
+                        "isExpandable": true,
+                        "expand": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Conversion",
+            "status": 0,
+            "active": true,
+            "disabled": true,
+            "steps": [
+                {
+                    "name": "Conversion SetUp",
+                    "status": 1,
+                    "disabled": true,
+                    "active": false,
+                    "expandOptions": {
+                        "isExpandable": true,
+                        "expand": true
+                    }
+                },
+                {
+                    "name": "Execution",
+                    "status": 0,
+                    "disabled": false,
+                    "active": true,
+                    "expandOptions": {
+                        "isExpandable": true,
+                        "expand": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Post-Conversion",
+            "status": 0,
+            "active": false,
+            "disabled": true,
+            "steps": [
+                {
+                    "name": "Results",
+                    "status": 0,
+                    "disabled": true,
+                    "active": false
+                }
+            ]
+        }
+    ],
+    "conversionSettings": null,
+    "internalProcessInputPath": "",
+    "internalAssessmentOutputPath": "/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook_output/Assessment-7-15-2025T11 17",
+    "internalConversionOutputPath": "/Users/mardiyan/Documents/Snowflake/POC/Tsel Datalakehouse/Snowconvert/notebook_output/Conversion-7-15-2025T11 19",
+    "customerData": {
+        "company": "Snowflake",
+        "email": "muhammad.ardiyan@snowflake.com"
+    },
+    "conversionProgress": {
+        "isSuccessful": true
+    },
+    "assessmentProgress": {
+        "isSuccessful": true
+    },
+    "customInputPaths": {
+        "assessment": "",
+        "conversion": ""
+    },
+    "sqlFlavor": "Databricks",
+    "isPandasEnabled": false,
+    "isJupyterConversionEnabled": true,
+    "isSmaCheckpointsEnabled": true,
+    "checkpointsAsActive": true,
+    "checkpointsCollectUDFs": false,
+    "checkpointsMode": "Schema",
+    "checkpointsSample": "100%",
+    "checkpointsRelevantCreationFunctions": [
+        "pyspark.rdd.RDD.toDF",
+        "pyspark.sql.readwriter.DataFrameReader.csv",
+        "pyspark.sql.readwriter.DataFrameReader.jdbc",
+        "pyspark.sql.readwriter.DataFrameReader.json",
+        "pyspark.sql.readwriter.DataFrameReader.load",
+        "pyspark.sql.readwriter.DataFrameReader.orc",
+        "pyspark.sql.readwriter.DataFrameReader.parquet",
+        "pyspark.sql.readwriter.DataFrameReader.table",
+        "pyspark.sql.readwriter.DataFrameReader.text",
+        "pyspark.sql.session.SparkSession.createDataFrame"
+    ],
+    "checkpointsRelevantTransformationFunctions": [
+        "pyspark.sql.dataframe.DataFrame.intersect",
+        "pyspark.sql.dataframe.DataFrame.join",
+        "pyspark.sql.dataframe.DataFrame.union",
+        "pyspark.sql.group.GroupedData.pivot"
+    ],
+    "checkpointsRelevantUserFunctions": []
+}

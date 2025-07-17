@@ -1,0 +1,9 @@
+{
+  "user": "my_user",
+  "password": "my_password",
+  "account": "my_account",
+  "role": "my_role",
+  "warehouse": "my_warehouse",
+  "database": "my_database",
+  "schema": "my_schema"
+}

@@ -1,0 +1,5 @@
+Element,ProjectId,FileId,Count,SessionId,Extension,Technology,Bytes,CharacterLength,LinesOfCode,ParseResult,Ignored,OriginFilePath
+Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb,notebook,Sample_1. Pipeline Periodically - Usual Environment with Entropy.ipynb,1,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,.ipynb,JupyterNotebook,84008,84007,222,Success,False,
+Sample_2. Pipeline Periodically - Mobility Trip.ipynb,notebook,Sample_2. Pipeline Periodically - Mobility Trip.ipynb,1,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,.ipynb,JupyterNotebook,240273,240273,340,Success,False,
+Sample_3a. Pipeline Periodically - Tourism.ipynb,notebook,Sample_3a. Pipeline Periodically - Tourism.ipynb,1,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,.ipynb,JupyterNotebook,114007,114007,271,Success,False,
+Tsel Use Case 2 Conversion.snowma,notebook,Tsel Use Case 2 Conversion.snowma,1,0f552bec-ad97-4d62-8e6b-5f58f82cb32c,.snowma,Other,3857,0,0,Error,True,
